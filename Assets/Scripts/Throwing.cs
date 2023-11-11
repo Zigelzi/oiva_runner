@@ -2,16 +2,27 @@ using UnityEngine;
 
 public class Throwing : MonoBehaviour
 {
+    [SerializeField] private float _throwForce = 10f;
+    [SerializeField] private Transform _carryingPosition;
 
-    // Start is called before the first frame update
-    void Start()
+    private Scooter _currentScooter;
+
+    private void OnCollisionEnter(Collision collision)
     {
+        if (_currentScooter != null) return;
 
+        if (collision.gameObject.TryGetComponent<Scooter>(out Scooter newScooter))
+        {
+            _currentScooter = newScooter;
+            newScooter.Follow(_carryingPosition);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Throw()
     {
-
+        if (_currentScooter == null) return;
+        Vector3 direction = new Vector3(Random.Range(.5f, 1f), Random.Range(0f, 1f), Random.Range(-1f, 1f));
+        _currentScooter.Throw(direction, _throwForce);
+        _currentScooter = null;
     }
 }

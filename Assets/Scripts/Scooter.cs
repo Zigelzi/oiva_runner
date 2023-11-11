@@ -2,21 +2,33 @@ using UnityEngine;
 
 public class Scooter : MonoBehaviour
 {
-    [SerializeField] private float _bounceForce = 10f;
+
 
     private Rigidbody _rb;
+    private Transform _playerFollowTransform;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void Update()
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Vector3 bounceDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(0f, 1f), Random.Range(-1f, 1f));
-            _rb.AddForce(bounceDirection * _bounceForce, ForceMode.Impulse);
-        }
+        if (_playerFollowTransform == null) return;
+        transform.position = _playerFollowTransform.position;
     }
+
+    public void Follow(Transform newPlayerFollowTransform)
+    {
+        _playerFollowTransform = newPlayerFollowTransform;
+        _rb.isKinematic = true;
+    }
+
+    public void Throw(Vector3 direction, float forceAmount)
+    {
+        _playerFollowTransform = null;
+        _rb.isKinematic = false;
+        _rb.AddForce(direction * forceAmount, ForceMode.Impulse);
+    }
+
 }
