@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class Scooter : MonoBehaviour
 {
-
+    [SerializeField] private float _despawnDuration = 2f; // Seconds.
 
     private Rigidbody _rb;
     private Transform _playerFollowTransform;
+    Vector3 _playerPositionOnThrow;
 
     private void Awake()
     {
@@ -28,7 +29,15 @@ public class Scooter : MonoBehaviour
     {
         _playerFollowTransform = null;
         _rb.isKinematic = false;
+        _playerPositionOnThrow = GameObject.FindGameObjectWithTag("Player").transform.position;
         _rb.AddForce(direction * forceAmount, ForceMode.Impulse);
+        Invoke("DestroyAfterFlying", _despawnDuration);
+    }
+
+    private void DestroyAfterFlying()
+    {
+        float throwDistance = Vector3.Distance(_playerPositionOnThrow, transform.position);
+        Destroy(gameObject);
     }
 
 }
