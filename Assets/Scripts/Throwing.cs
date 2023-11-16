@@ -22,7 +22,9 @@ public class Throwing : MonoBehaviour
     {
         if (_currentScooter == null) return;
         Vector3 direction = new Vector3(Random.Range(.5f, 1f), Random.Range(0f, 1f), Random.Range(-1f, 1f));
-        _currentScooter.Throw(direction, _throwForce);
+        _currentScooter.Throw(direction, _throwForce, gameObject.transform);
+
+
         _currentScooter = null;
     }
 }

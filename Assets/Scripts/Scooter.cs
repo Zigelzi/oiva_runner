@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class Scooter : MonoBehaviour
@@ -6,8 +8,8 @@ public class Scooter : MonoBehaviour
 
     private Rigidbody _rb;
     private Transform _playerFollowTransform;
-    Vector3 _playerPositionOnThrow;
 
+    public static event Action<int> onScooterDestroy;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -25,18 +27,21 @@ public class Scooter : MonoBehaviour
         _rb.isKinematic = true;
     }
 
-    public void Throw(Vector3 direction, float forceAmount)
+    public void Throw(Vector3 direction, float forceAmount, Transform player)
     {
         _playerFollowTransform = null;
         _rb.isKinematic = false;
-        _playerPositionOnThrow = GameObject.FindGameObjectWithTag("Player").transform.position;
         _rb.AddForce(direction * forceAmount, ForceMode.Impulse);
-        Invoke("DestroyAfterFlying", _despawnDuration);
+        //Invoke("DestroyAfterFlying", _despawnDuration);
+        StartCoroutine(DestroyAfterFlying(player));
     }
 
-    private void DestroyAfterFlying()
+    private IEnumerator DestroyAfterFlying(Transform player)
     {
-        float throwDistance = Vector3.Distance(_playerPositionOnThrow, transform.position);
+        yield return new WaitForSeconds(_despawnDuration);
+        float distance = Vector3.Distance(transform.position, player.position);
+        Debug.Log($"Flew {distance} meters!");
+        onScooterDestroy?.Invoke((int)distance);
         Destroy(gameObject);
     }
 
