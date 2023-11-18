@@ -1,13 +1,17 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Throwing : MonoBehaviour
 {
-    [SerializeField] private float _throwForce = 10f;
+    [SerializeField] private float _maxThrowForce = 20f;
     [SerializeField] private Transform _carryingPosition;
 
     private Scooter _currentScooter;
+    private Coroutine _currentThrowForceRoutine;
+    private float _currentThrowForce = 0f;
 
+    public float CurrentThrowForcePercentage { get { return _currentThrowForce / _maxThrowForce; } }
     public UnityEvent onScooterPickup;
     public UnityEvent onScooterThrow;
 
@@ -19,7 +23,7 @@ public class Throwing : MonoBehaviour
         {
             _currentScooter = newScooter;
             newScooter.Follow(_carryingPosition);
-            onScooterPickup?.Invoke();
+            StartVaryingThrowforce();
         }
     }
 
@@ -27,8 +31,37 @@ public class Throwing : MonoBehaviour
     {
         if (_currentScooter == null) return;
         Vector3 direction = new Vector3(Random.Range(.5f, 1f), Random.Range(0f, 1f), Random.Range(-1f, 1f));
-        _currentScooter.Throw(direction, _throwForce, gameObject.transform);
+        _currentScooter.Throw(direction, _currentThrowForce, gameObject.transform);
         _currentScooter = null;
+        StopVaryingThrowForce();
         onScooterThrow?.Invoke();
+    }
+
+    private void StartVaryingThrowforce()
+    {
+        _currentThrowForceRoutine = StartCoroutine(VaryThrowForce());
+    }
+
+    private void StopVaryingThrowForce()
+    {
+        StopCoroutine(_currentThrowForceRoutine);
+        _currentThrowForce = 0;
+    }
+
+    private IEnumerator VaryThrowForce()
+    {
+        while (true)
+        {
+            while (_currentThrowForce < _maxThrowForce)
+            {
+                _currentThrowForce += Mathf.Lerp(0, _maxThrowForce, .5f * Time.deltaTime);
+                yield return null;
+            }
+            while (_currentThrowForce > 0)
+            {
+                _currentThrowForce -= Mathf.Lerp(0, _maxThrowForce, .5f * Time.deltaTime);
+                yield return null;
+            }
+        }
     }
 }

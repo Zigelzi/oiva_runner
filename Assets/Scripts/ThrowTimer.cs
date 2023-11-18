@@ -15,28 +15,11 @@ public class ThrowTimer : MonoBehaviour
         _throwing = GameObject.FindGameObjectWithTag("Player").GetComponent<Throwing>();
     }
 
-    private void OnEnable()
+    private void Update()
     {
-        _throwing.onScooterPickup.AddListener(StartThrowTimer);
-        _throwing.onScooterThrow.AddListener(StopThrowTimer);
+        _slider.value = _throwing.CurrentThrowForcePercentage;
     }
 
-    private void OnDisable()
-    {
-        _throwing.onScooterPickup.RemoveListener(StartThrowTimer);
-        _throwing.onScooterThrow.RemoveListener(StopThrowTimer);
-    }
-
-    private void StartThrowTimer()
-    {
-        _currentThrowTimer = StartCoroutine(SlideBackAndForth());
-    }
-
-    private void StopThrowTimer()
-    {
-        StopCoroutine(_currentThrowTimer);
-        _slider.value = 0;
-    }
     private IEnumerator SlideBackAndForth()
     {
         while (true)
