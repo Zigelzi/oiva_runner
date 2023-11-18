@@ -4,23 +4,30 @@ using UnityEngine.UI;
 
 public class ThrowTimer : MonoBehaviour
 {
-    Slider _slider;
-
+    private Slider _slider;
+    [SerializeField] private bool _isBouncing = false;
     private void Awake()
     {
         _slider = GetComponent<Slider>();
 
         _slider.value = 0;
+        StartCoroutine(SlideBackAndForth());
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private IEnumerator SlideBackAndForth()
     {
-        yield return null;
+        while (_isBouncing)
+        {
+            while (_slider.value < 1)
+            {
+                _slider.value += Mathf.Lerp(_slider.minValue, _slider.maxValue, .5f * Time.deltaTime);
+                yield return null;
+            }
+            while (_slider.value > 0)
+            {
+                _slider.value -= Mathf.Lerp(_slider.minValue, _slider.maxValue, .5f * Time.deltaTime);
+                yield return null;
+            }
+
+        }
     }
 }
