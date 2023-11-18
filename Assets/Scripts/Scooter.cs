@@ -32,7 +32,6 @@ public class Scooter : MonoBehaviour
         _playerFollowTransform = null;
         _rb.isKinematic = false;
         _rb.AddForce(direction * forceAmount, ForceMode.Impulse);
-        //Invoke("DestroyAfterFlying", _despawnDuration);
         StartCoroutine(DestroyAfterFlying(player));
     }
 
