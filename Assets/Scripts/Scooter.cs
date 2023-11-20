@@ -39,7 +39,6 @@ public class Scooter : MonoBehaviour
     {
         yield return new WaitForSeconds(_despawnDuration);
         float distance = Vector3.Distance(transform.position, player.position);
-        Debug.Log($"Flew {distance} meters!");
         onScooterDestroy?.Invoke((int)distance);
         Destroy(gameObject);
     }

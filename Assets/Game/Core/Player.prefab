@@ -176,6 +176,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementSpeed: 5
+  onTravelDistanceChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-8575095120788453095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,8 +191,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5757bd761f324934cb26233abc139fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _throwForce: 30
+  _maxThrowForce: 25
+  _throwForceSelectionSpeed: 1.5
   _carryingPosition: {fileID: 4440447027601451386}
+  onScooterPickup:
+    m_PersistentCalls:
+      m_Calls: []
+  onScooterThrow:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &8495751651604826492
 PrefabInstance:
   m_ObjectHideFlags: 0

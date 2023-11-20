@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class Throwing : MonoBehaviour
 {
     [SerializeField] private float _maxThrowForce = 20f;
+    [SerializeField] private float _throwForceSelectionSpeed = 1f;
     [SerializeField] private Transform _carryingPosition;
 
     private Scooter _currentScooter;
@@ -54,12 +55,12 @@ public class Throwing : MonoBehaviour
         {
             while (_currentThrowForce < _maxThrowForce)
             {
-                _currentThrowForce += Mathf.Lerp(0, _maxThrowForce, .5f * Time.deltaTime);
+                _currentThrowForce += Mathf.Lerp(0, _maxThrowForce, _throwForceSelectionSpeed * Time.deltaTime);
                 yield return null;
             }
             while (_currentThrowForce > 0)
             {
-                _currentThrowForce -= Mathf.Lerp(0, _maxThrowForce, .5f * Time.deltaTime);
+                _currentThrowForce -= Mathf.Lerp(0, _maxThrowForce, _throwForceSelectionSpeed * Time.deltaTime);
                 yield return null;
             }
         }
