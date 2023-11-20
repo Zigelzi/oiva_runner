@@ -1250,6 +1250,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1433989897}
     m_Modifications:
+    - target: {fileID: 120446720922647429, guid: 5aa6ebe07a3f59042822e9d9b30a22a6,
+        type: 3}
+      propertyPath: _energyConsumption
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 454546285124365306, guid: 5aa6ebe07a3f59042822e9d9b30a22a6,
         type: 3}
       propertyPath: m_LocalPosition.x

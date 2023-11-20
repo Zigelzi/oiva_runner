@@ -12,6 +12,7 @@ public class Throwing : MonoBehaviour
     private Coroutine _currentThrowForceRoutine;
     private float _currentThrowForce = 0f;
 
+    public Scooter CurrentScooter { get { return _currentScooter; } }
     public float CurrentThrowForcePercentage { get { return _currentThrowForce / _maxThrowForce; } }
     public UnityEvent onScooterPickup;
     public UnityEvent onScooterThrow;
