@@ -8,6 +8,8 @@ public class Energy : MonoBehaviour
     [SerializeField] private float _currentEnergy = -1f;
     Throwing _throwing;
 
+    public float CurrentEnergy { get { return _currentEnergy; } }
+
     private void Awake()
     {
         _currentEnergy = _maxEnergy;
