@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Energy : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Energy : MonoBehaviour
     Throwing _throwing;
 
     public float CurrentEnergy { get { return _currentEnergy; } }
+    public UnityEvent onEnergyDepleted;
 
     private void Awake()
     {
@@ -23,7 +25,7 @@ public class Energy : MonoBehaviour
 
     private void OnDisable()
     {
-        _throwing.onScooterThrow.AddListener(Refill);
+        _throwing.onScooterThrow.RemoveListener(Refill);
     }
 
     private void Update()
@@ -44,6 +46,7 @@ public class Energy : MonoBehaviour
         if (_currentEnergy <= 0)
         {
             _currentEnergy = 0;
+            onEnergyDepleted?.Invoke();
         }
     }
 
