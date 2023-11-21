@@ -16,6 +16,16 @@ public class Energy : MonoBehaviour
         _throwing = GetComponent<Throwing>();
     }
 
+    private void OnEnable()
+    {
+        _throwing.onScooterThrow.AddListener(Refill);
+    }
+
+    private void OnDisable()
+    {
+        _throwing.onScooterThrow.AddListener(Refill);
+    }
+
     private void Update()
     {
         Consume();
@@ -35,6 +45,11 @@ public class Energy : MonoBehaviour
         {
             _currentEnergy = 0;
         }
+    }
+
+    private void Refill()
+    {
+        _currentEnergy = _maxEnergy;
     }
 
 }
