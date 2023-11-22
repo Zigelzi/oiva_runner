@@ -10,10 +10,14 @@ public class Throwing : MonoBehaviour
 
     private Scooter _currentScooter;
     private Coroutine _currentThrowForceRoutine;
+    private int _currentThrowDistance = 0;
     private float _currentThrowForce = 0f;
     private Energy _energy;
+
     public Scooter CurrentScooter { get { return _currentScooter; } }
     public float CurrentThrowForcePercentage { get { return _currentThrowForce / _maxThrowForce; } }
+    public int CurrentThrowDistance { get { return _currentThrowDistance; } }
+
     public UnityEvent onScooterPickup;
     public UnityEvent onScooterThrow;
 
@@ -24,11 +28,13 @@ public class Throwing : MonoBehaviour
     private void OnEnable()
     {
         _energy.onEnergyDepleted.AddListener(Disable);
+        Scooter.onScooterDestroy += UpdateThrowDistance;
     }
 
     private void OnDisable()
     {
         _energy.onEnergyDepleted.RemoveListener(Disable);
+        Scooter.onScooterDestroy -= UpdateThrowDistance;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -87,5 +93,11 @@ public class Throwing : MonoBehaviour
     {
         StopAllCoroutines();
         enabled = false;
+    }
+
+    private void UpdateThrowDistance(int additionalDistance)
+    {
+        _currentThrowDistance += additionalDistance;
+
     }
 }

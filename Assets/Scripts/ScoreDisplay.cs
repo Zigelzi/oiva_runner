@@ -7,26 +7,39 @@ public class ScoreDisplay : MonoBehaviour
     [SerializeField] private TMP_Text _scooterThrowDistance;
 
     private Movement _movement;
-    private int _currentThrowDistance = 0;
+    private Throwing _throwing;
 
     private void Awake()
     {
-        _movement = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        _movement = player.GetComponent<Movement>();
+        _throwing = player.GetComponent<Throwing>();
 
-        _currentThrowDistance = 0;
         InitialiseScores();
     }
 
     private void OnEnable()
     {
         _movement.onTravelDistanceChanged.AddListener(UpdateTravelDistance);
-        Scooter.onScooterDestroy += UpdateThrowDistance;
+
     }
 
     private void OnDisable()
     {
         _movement.onTravelDistanceChanged.RemoveListener(UpdateTravelDistance);
-        Scooter.onScooterDestroy -= UpdateThrowDistance;
+    }
+
+    private void Update()
+    {
+        if (_travelDistance)
+        {
+            //_travelDistance.text = "0 m";
+        }
+        if (_scooterThrowDistance)
+        {
+            _scooterThrowDistance.text = _throwing.CurrentThrowDistance.ToString() + " m";
+        }
+
     }
 
     private void InitialiseScores()
@@ -37,7 +50,7 @@ public class ScoreDisplay : MonoBehaviour
         }
         if (_scooterThrowDistance)
         {
-            _scooterThrowDistance.text = _currentThrowDistance.ToString();
+            _scooterThrowDistance.text = "0 m";
         }
     }
 
@@ -46,14 +59,6 @@ public class ScoreDisplay : MonoBehaviour
         _travelDistance.text = newDistance.ToString() + " m";
     }
 
-    private void UpdateThrowDistance(int additionalDistance)
-    {
-        _currentThrowDistance += additionalDistance;
 
-        if (_scooterThrowDistance)
-        {
-            _scooterThrowDistance.text = _currentThrowDistance.ToString();
-        }
-    }
 
 }
