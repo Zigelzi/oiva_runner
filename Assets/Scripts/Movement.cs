@@ -1,19 +1,14 @@
-using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Movement : MonoBehaviour
 {
     [SerializeField] private float _movementSpeed = 5f;
 
-    private Vector3 _startingPosition;
+    private int _currentDistanceTravelled = 0;
     private Energy _energy;
+    private Vector3 _startingPosition;
 
-    public TravelDistanceChanged onTravelDistanceChanged;
-
-    [Serializable]
-    public class TravelDistanceChanged : UnityEvent<int> { }
-
+    public int CurrentDistanceTravelled { get { return _currentDistanceTravelled; } }
     private void Awake()
     {
         _startingPosition = transform.position;
@@ -39,9 +34,8 @@ public class Movement : MonoBehaviour
 
     private void GetTravelDistance()
     {
-        int distance = (int)Vector3.Distance(_startingPosition, transform.position);
+        _currentDistanceTravelled = (int)Vector3.Distance(_startingPosition, transform.position);
 
-        onTravelDistanceChanged?.Invoke(distance);
     }
 
     private void Disable()

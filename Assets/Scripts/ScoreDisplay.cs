@@ -18,22 +18,11 @@ public class ScoreDisplay : MonoBehaviour
         InitialiseScores();
     }
 
-    private void OnEnable()
-    {
-        _movement.onTravelDistanceChanged.AddListener(UpdateTravelDistance);
-
-    }
-
-    private void OnDisable()
-    {
-        _movement.onTravelDistanceChanged.RemoveListener(UpdateTravelDistance);
-    }
-
     private void Update()
     {
         if (_travelDistance)
         {
-            //_travelDistance.text = "0 m";
+            _travelDistance.text = _movement.CurrentDistanceTravelled.ToString() + " m";
         }
         if (_scooterThrowDistance)
         {
@@ -53,12 +42,4 @@ public class ScoreDisplay : MonoBehaviour
             _scooterThrowDistance.text = "0 m";
         }
     }
-
-    private void UpdateTravelDistance(int newDistance)
-    {
-        _travelDistance.text = newDistance.ToString() + " m";
-    }
-
-
-
 }
