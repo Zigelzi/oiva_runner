@@ -22,12 +22,12 @@ public class Movement : MonoBehaviour
 
     private void OnEnable()
     {
-        _energy.onEnergyDepleted.AddListener(DisableMovement);
+        _energy.onEnergyDepleted.AddListener(Disable);
     }
 
     private void OnDisable()
     {
-        _energy.onEnergyDepleted.RemoveListener(DisableMovement);
+        _energy.onEnergyDepleted.RemoveListener(Disable);
     }
 
     // Update is called once per frame
@@ -44,7 +44,7 @@ public class Movement : MonoBehaviour
         onTravelDistanceChanged?.Invoke(distance);
     }
 
-    private void DisableMovement()
+    private void Disable()
     {
         enabled = false;
     }

@@ -11,11 +11,25 @@ public class Throwing : MonoBehaviour
     private Scooter _currentScooter;
     private Coroutine _currentThrowForceRoutine;
     private float _currentThrowForce = 0f;
-
+    private Energy _energy;
     public Scooter CurrentScooter { get { return _currentScooter; } }
     public float CurrentThrowForcePercentage { get { return _currentThrowForce / _maxThrowForce; } }
     public UnityEvent onScooterPickup;
     public UnityEvent onScooterThrow;
+
+    private void Awake()
+    {
+        _energy = GetComponent<Energy>();
+    }
+    private void OnEnable()
+    {
+        _energy.onEnergyDepleted.AddListener(Disable);
+    }
+
+    private void OnDisable()
+    {
+        _energy.onEnergyDepleted.RemoveListener(Disable);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -32,6 +46,8 @@ public class Throwing : MonoBehaviour
     public void Throw()
     {
         if (_currentScooter == null) return;
+        if (!enabled) return;
+
         Vector3 direction = new Vector3(Random.Range(.5f, 1f), Random.Range(0f, 1f), Random.Range(-1f, 1f));
         _currentScooter.Throw(direction, _currentThrowForce, gameObject.transform);
         _currentScooter = null;
@@ -65,5 +81,11 @@ public class Throwing : MonoBehaviour
                 yield return null;
             }
         }
+    }
+
+    private void Disable()
+    {
+        StopAllCoroutines();
+        enabled = false;
     }
 }
