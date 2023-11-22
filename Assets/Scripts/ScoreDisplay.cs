@@ -22,11 +22,11 @@ public class ScoreDisplay : MonoBehaviour
     {
         if (_travelDistance)
         {
-            _travelDistance.text = _movement.CurrentDistanceTravelled.ToString() + " m";
+            _travelDistance.text = _movement.CurrentDistanceTravelled.ToString();
         }
         if (_scooterThrowDistance)
         {
-            _scooterThrowDistance.text = _throwing.CurrentThrowDistance.ToString() + " m";
+            _scooterThrowDistance.text = _throwing.CurrentThrowDistance.ToString();
         }
 
     }
@@ -35,11 +35,11 @@ public class ScoreDisplay : MonoBehaviour
     {
         if (_travelDistance)
         {
-            _travelDistance.text = "0 m";
+            _travelDistance.text = "0";
         }
         if (_scooterThrowDistance)
         {
-            _scooterThrowDistance.text = "0 m";
+            _scooterThrowDistance.text = "0";
         }
     }
 }
