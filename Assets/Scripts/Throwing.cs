@@ -54,7 +54,7 @@ public class Throwing : MonoBehaviour
         if (_currentScooter == null) return;
         if (!enabled) return;
 
-        Vector3 direction = new Vector3(Random.Range(.5f, 1f), Random.Range(0f, 1f), Random.Range(-1f, 1f));
+        Vector3 direction = new Vector3(1, Random.Range(0f, 1f), Random.Range(-1f, .2f));
         _currentScooter.Throw(direction, _currentThrowForce, gameObject.transform);
         _currentScooter = null;
         StopVaryingThrowForce();
