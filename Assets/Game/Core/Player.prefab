@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1260fac4f133f54b818fe4b58c3906e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _energyConsumption: 2
+  _energyConsumption: 45
   _maxEnergy: 100
   _currentEnergy: -1
   onEnergyDepleted:
