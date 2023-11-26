@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Scooter : MonoBehaviour
 {
     [SerializeField] private float _despawnDuration = 2f; // Seconds.
+    [SerializeField] private Vector2 spinAmount = new Vector2(1f, 15f);
 
     private bool _isThrown = false;
     private Rigidbody _rb;
@@ -32,10 +34,14 @@ public class Scooter : MonoBehaviour
 
     public void Throw(Vector3 direction, float forceAmount, Transform player)
     {
+        Vector3 spinDirection = new Vector3(Random.Range(spinAmount.x, spinAmount.y), Random.Range(spinAmount.x, spinAmount.y), Random.Range(spinAmount.x, spinAmount.y));
+
         _playerFollowTransform = null;
         _rb.isKinematic = false;
         _isThrown = true;
         _rb.AddForce(direction * forceAmount, ForceMode.Impulse);
+        _rb.AddTorque(spinDirection, ForceMode.Impulse);
+
         StartCoroutine(DestroyAfterFlying(player));
     }
 
