@@ -43,6 +43,8 @@ public class Throwing : MonoBehaviour
 
         if (collision.gameObject.TryGetComponent<Scooter>(out Scooter newScooter))
         {
+            if (newScooter.IsThrown) return;
+
             _currentScooter = newScooter;
             newScooter.Follow(_carryingPosition);
             StartVaryingThrowforce();

@@ -6,10 +6,13 @@ public class Scooter : MonoBehaviour
 {
     [SerializeField] private float _despawnDuration = 2f; // Seconds.
 
+    private bool _isThrown = false;
     private Rigidbody _rb;
     private Transform _playerFollowTransform;
 
     public static event Action<int> onScooterDestroy;
+
+    public bool IsThrown { get { return _isThrown; } }
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -31,6 +34,7 @@ public class Scooter : MonoBehaviour
     {
         _playerFollowTransform = null;
         _rb.isKinematic = false;
+        _isThrown = true;
         _rb.AddForce(direction * forceAmount, ForceMode.Impulse);
         StartCoroutine(DestroyAfterFlying(player));
     }
