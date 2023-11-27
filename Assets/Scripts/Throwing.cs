@@ -5,16 +5,20 @@ using UnityEngine.Events;
 public class Throwing : MonoBehaviour
 {
     [SerializeField] private float _maxThrowForce = 20f;
-    [SerializeField] private float _throwForceSelectionSpeed = 1f;
+    [SerializeField] private float _throwSelectionSpeed = 1f;
     [SerializeField] private Transform _carryingPosition;
 
     private Scooter _currentScooter;
+    private Vector3 _currentThrowDirection = Vector3.right;
     private Coroutine _currentThrowForceRoutine;
+    private Coroutine _currentThrowDirectionRoutine;
     private int _currentThrowDistance = 0;
     private float _currentThrowForce = 0f;
     private Energy _energy;
 
+    public Transform CarryingPosition { get { return _carryingPosition; } }
     public Scooter CurrentScooter { get { return _currentScooter; } }
+    public Vector3 CurrentThrowDirection { get { return _currentThrowDirection; } }
     public float CurrentThrowForcePercentage { get { return _currentThrowForce / _maxThrowForce; } }
     public int CurrentThrowDistance { get { return _currentThrowDistance; } }
 
@@ -48,6 +52,7 @@ public class Throwing : MonoBehaviour
             _currentScooter = newScooter;
             newScooter.Follow(_carryingPosition);
             StartVaryingThrowforce();
+            StartVaryingThrowDirection();
         }
     }
 
@@ -56,10 +61,10 @@ public class Throwing : MonoBehaviour
         if (_currentScooter == null) return;
         if (!enabled) return;
 
-        Vector3 direction = new Vector3(1, Random.Range(.2f, 1f), 0);
-        _currentScooter.Throw(direction, _currentThrowForce, gameObject.transform);
+        _currentScooter.Throw(_currentThrowDirection, _currentThrowForce, gameObject.transform);
         _currentScooter = null;
         StopVaryingThrowForce();
+        StopVaryingThrowDirection();
         onScooterThrow?.Invoke();
     }
 
@@ -74,18 +79,47 @@ public class Throwing : MonoBehaviour
         _currentThrowForce = 0;
     }
 
+    private void StartVaryingThrowDirection()
+    {
+        _currentThrowDirectionRoutine = StartCoroutine(VaryThrowDirection());
+    }
+
+    private void StopVaryingThrowDirection()
+    {
+        StopCoroutine(_currentThrowDirectionRoutine);
+        _currentThrowDirection = Vector3.right;
+    }
+
     private IEnumerator VaryThrowForce()
     {
         while (true)
         {
             while (_currentThrowForce < _maxThrowForce)
             {
-                _currentThrowForce += Mathf.Lerp(0, _maxThrowForce, _throwForceSelectionSpeed * Time.deltaTime);
+                _currentThrowForce += Mathf.Lerp(0, _maxThrowForce, _throwSelectionSpeed * Time.deltaTime);
                 yield return null;
             }
             while (_currentThrowForce > 0)
             {
-                _currentThrowForce -= Mathf.Lerp(0, _maxThrowForce, _throwForceSelectionSpeed * Time.deltaTime);
+                _currentThrowForce -= Mathf.Lerp(0, _maxThrowForce, _throwSelectionSpeed * Time.deltaTime);
+                yield return null;
+            }
+        }
+    }
+
+    private IEnumerator VaryThrowDirection()
+    {
+        _currentThrowDirection = Vector3.right;
+        while (true)
+        {
+            while (_currentThrowDirection.y <= 1)
+            {
+                _currentThrowDirection.y += Mathf.Lerp(0, 1, _throwSelectionSpeed * Time.deltaTime);
+                yield return null;
+            }
+            while (_currentThrowDirection.y > 0)
+            {
+                _currentThrowDirection.y -= Mathf.Lerp(0, 1, _throwSelectionSpeed * Time.deltaTime);
                 yield return null;
             }
         }
