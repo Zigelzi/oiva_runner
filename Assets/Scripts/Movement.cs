@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
 
     private int _currentDistanceTravelled = 0;
     private Energy _energy;
+    private Goal _goal;
     private Vector3 _startingPosition;
 
     public int CurrentDistanceTravelled { get { return _currentDistanceTravelled; } }
@@ -13,16 +14,19 @@ public class Movement : MonoBehaviour
     {
         _startingPosition = transform.position;
         _energy = GetComponent<Energy>();
+        _goal = FindAnyObjectByType<Goal>();
     }
 
     private void OnEnable()
     {
         _energy.onEnergyDepleted.AddListener(Disable);
+        _goal.onGoalReach.AddListener(Disable);
     }
 
     private void OnDisable()
     {
         _energy.onEnergyDepleted.RemoveListener(Disable);
+        _goal.onGoalReach.RemoveListener(Disable);
     }
 
     // Update is called once per frame

@@ -15,6 +15,7 @@ public class Throwing : MonoBehaviour
     private int _currentThrowDistance = 0;
     private float _currentThrowForce = 0f;
     private Energy _energy;
+    private Goal _goal;
     private bool _isSelectingThrowDirection = false;
 
     public Transform CarryingPosition { get { return _carryingPosition; } }
@@ -30,17 +31,20 @@ public class Throwing : MonoBehaviour
     private void Awake()
     {
         _energy = GetComponent<Energy>();
+        _goal = FindAnyObjectByType<Goal>();
         _isSelectingThrowDirection = false;
     }
     private void OnEnable()
     {
         _energy.onEnergyDepleted.AddListener(Disable);
+        _goal.onGoalReach.AddListener(Disable);
         Scooter.onScooterDestroy += UpdateThrowDistance;
     }
 
     private void OnDisable()
     {
         _energy.onEnergyDepleted.RemoveListener(Disable);
+        _goal.onGoalReach.AddListener(Disable);
         Scooter.onScooterDestroy -= UpdateThrowDistance;
     }
 

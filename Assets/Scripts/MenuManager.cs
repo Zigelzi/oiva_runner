@@ -5,11 +5,13 @@ public class MenuManager : MonoBehaviour
 {
     private CanvasGroup _canvasGroup;
     private Energy _energy;
+    private Goal _goal;
 
     private void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
         _energy = GameObject.FindGameObjectWithTag("Player").GetComponent<Energy>();
+        _goal = FindAnyObjectByType<Goal>();
 
         if (!_canvasGroup) return;
         _canvasGroup.alpha = 0;
@@ -20,11 +22,13 @@ public class MenuManager : MonoBehaviour
     private void OnEnable()
     {
         _energy.onEnergyDepleted.AddListener(ShowMenu);
+        _goal.onGoalReach.AddListener(ShowMenu);
     }
 
     private void OnDisable()
     {
         _energy.onEnergyDepleted.RemoveListener(ShowMenu);
+        _goal.onGoalReach.RemoveListener(ShowMenu);
     }
     public void RestartLevel()
     {
