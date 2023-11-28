@@ -10,6 +10,7 @@ public class Scooter : MonoBehaviour
 
     private bool _isThrown = false;
     private Rigidbody _rb;
+    private Transform _player;
     private Transform _playerFollowTransform;
 
     public static event Action<int> onScooterDestroy;
@@ -18,6 +19,7 @@ public class Scooter : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
@@ -26,13 +28,19 @@ public class Scooter : MonoBehaviour
         transform.position = _playerFollowTransform.position;
     }
 
+    private void OnDestroy()
+    {
+        float distance = Vector3.Distance(transform.position, _player.position);
+        onScooterDestroy?.Invoke((int)distance);
+    }
+
     public void Follow(Transform newPlayerFollowTransform)
     {
         _playerFollowTransform = newPlayerFollowTransform;
         _rb.isKinematic = true;
     }
 
-    public void Throw(Vector3 direction, float forceAmount, Transform player)
+    public void Throw(Vector3 direction, float forceAmount)
     {
         Vector3 spinDirection = new Vector3(Random.Range(spinAmount.x, spinAmount.y), Random.Range(spinAmount.x, spinAmount.y), Random.Range(spinAmount.x, spinAmount.y));
 
@@ -42,14 +50,12 @@ public class Scooter : MonoBehaviour
         _rb.AddForce(direction * forceAmount, ForceMode.Impulse);
         _rb.AddTorque(spinDirection, ForceMode.Impulse);
 
-        StartCoroutine(DestroyAfterFlying(player));
+        StartCoroutine(DestroyAfterFlying());
     }
 
-    private IEnumerator DestroyAfterFlying(Transform player)
+    private IEnumerator DestroyAfterFlying()
     {
         yield return new WaitForSeconds(_despawnDuration);
-        float distance = Vector3.Distance(transform.position, player.position);
-        onScooterDestroy?.Invoke((int)distance);
         Destroy(gameObject);
     }
 

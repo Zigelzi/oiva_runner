@@ -84,7 +84,7 @@ public class Throwing : MonoBehaviour
         if (_currentScooter == null) return;
         if (!enabled) return;
 
-        _currentScooter.Throw(_currentThrowDirection, _currentThrowForce, gameObject.transform);
+        _currentScooter.Throw(_currentThrowDirection, _currentThrowForce);
         _currentScooter = null;
         StopVaryingThrowDirection();
         onScooterThrow?.Invoke();

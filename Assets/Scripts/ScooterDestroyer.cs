@@ -1,15 +1,13 @@
 using UnityEngine;
 
-public class Target : MonoBehaviour
+public class ScooterDestroyer : MonoBehaviour
 {
-    [SerializeField] private int _scoreAmount = 10;
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.TryGetComponent<Scooter>(out Scooter collidedScooter))
         {
-            Debug.Log($"Scored {_scoreAmount} points!");
-
+            if (!collidedScooter.IsThrown) return;
+            Destroy(collidedScooter);
         }
     }
 }
