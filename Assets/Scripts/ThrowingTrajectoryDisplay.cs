@@ -20,7 +20,7 @@ public class ThrowingTrajectoryDisplay : MonoBehaviour
         if (!_throwing) return;
         if (!_trajectoryLine) return;
 
-        if (_throwing.CurrentScooter)
+        if (_throwing.IsSelectingThrowDirection)
         {
             _trajectoryLine.enabled = true;
             _trajectoryLine.positionCount = 2;

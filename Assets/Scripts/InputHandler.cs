@@ -25,6 +25,6 @@ public class InputHandler : MonoBehaviour
 
     private void OnThrow(InputAction.CallbackContext context)
     {
-        _throwing.Throw();
+        _throwing.Interact();
     }
 }

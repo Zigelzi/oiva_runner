@@ -15,12 +15,14 @@ public class Throwing : MonoBehaviour
     private int _currentThrowDistance = 0;
     private float _currentThrowForce = 0f;
     private Energy _energy;
+    private bool _isSelectingThrowDirection = false;
 
     public Transform CarryingPosition { get { return _carryingPosition; } }
     public Scooter CurrentScooter { get { return _currentScooter; } }
     public Vector3 CurrentThrowDirection { get { return _currentThrowDirection; } }
     public float CurrentThrowForcePercentage { get { return _currentThrowForce / _maxThrowForce; } }
     public int CurrentThrowDistance { get { return _currentThrowDistance; } }
+    public bool IsSelectingThrowDirection { get { return _isSelectingThrowDirection; } }
 
     public UnityEvent onScooterPickup;
     public UnityEvent onScooterThrow;
@@ -28,6 +30,7 @@ public class Throwing : MonoBehaviour
     private void Awake()
     {
         _energy = GetComponent<Energy>();
+        _isSelectingThrowDirection = false;
     }
     private void OnEnable()
     {
@@ -52,7 +55,23 @@ public class Throwing : MonoBehaviour
             _currentScooter = newScooter;
             newScooter.Follow(_carryingPosition);
             StartVaryingThrowforce();
+        }
+    }
+
+    public void Interact()
+    {
+        if (!_currentScooter) return;
+        if (!enabled) return;
+
+        if (!_isSelectingThrowDirection)
+        {
+            StopVaryingThrowForce();
             StartVaryingThrowDirection();
+        }
+        else
+        {
+            Throw();
+            _currentThrowForce = 0;
         }
     }
 
@@ -63,7 +82,6 @@ public class Throwing : MonoBehaviour
 
         _currentScooter.Throw(_currentThrowDirection, _currentThrowForce, gameObject.transform);
         _currentScooter = null;
-        StopVaryingThrowForce();
         StopVaryingThrowDirection();
         onScooterThrow?.Invoke();
     }
@@ -76,17 +94,18 @@ public class Throwing : MonoBehaviour
     private void StopVaryingThrowForce()
     {
         StopCoroutine(_currentThrowForceRoutine);
-        _currentThrowForce = 0;
     }
 
     private void StartVaryingThrowDirection()
     {
         _currentThrowDirectionRoutine = StartCoroutine(VaryThrowDirection());
+        _isSelectingThrowDirection = true;
     }
 
     private void StopVaryingThrowDirection()
     {
         StopCoroutine(_currentThrowDirectionRoutine);
+        _isSelectingThrowDirection = false;
         _currentThrowDirection = Vector3.right;
     }
 
