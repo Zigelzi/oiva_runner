@@ -5,7 +5,8 @@ using UnityEngine.Events;
 public class Throwing : MonoBehaviour
 {
     [SerializeField] private float _maxThrowForce = 20f;
-    [SerializeField] private float _throwSelectionSpeed = 1f;
+    [SerializeField] private float _throwForceSelectionSpeed = 1f;
+    [SerializeField] private float _throwDirectionSelectionSpeed = 1f;
     [SerializeField] private Transform _carryingPosition;
 
     private Scooter _currentScooter;
@@ -119,12 +120,12 @@ public class Throwing : MonoBehaviour
         {
             while (_currentThrowForce < _maxThrowForce)
             {
-                _currentThrowForce += Mathf.Lerp(0, _maxThrowForce, _throwSelectionSpeed * Time.deltaTime);
+                _currentThrowForce += Mathf.Lerp(0, _maxThrowForce, _throwForceSelectionSpeed * Time.deltaTime);
                 yield return null;
             }
             while (_currentThrowForce > 0)
             {
-                _currentThrowForce -= Mathf.Lerp(0, _maxThrowForce, _throwSelectionSpeed * Time.deltaTime);
+                _currentThrowForce -= Mathf.Lerp(0, _maxThrowForce, _throwForceSelectionSpeed * Time.deltaTime);
                 yield return null;
             }
         }
@@ -137,12 +138,12 @@ public class Throwing : MonoBehaviour
         {
             while (_currentThrowDirection.y <= 1)
             {
-                _currentThrowDirection.y += Mathf.Lerp(0, 1, _throwSelectionSpeed * Time.deltaTime);
+                _currentThrowDirection.y += Mathf.Lerp(0, 1, _throwDirectionSelectionSpeed * Time.deltaTime);
                 yield return null;
             }
             while (_currentThrowDirection.y > 0)
             {
-                _currentThrowDirection.y -= Mathf.Lerp(0, 1, _throwSelectionSpeed * Time.deltaTime);
+                _currentThrowDirection.y -= Mathf.Lerp(0, 1, _throwDirectionSelectionSpeed * Time.deltaTime);
                 yield return null;
             }
         }
