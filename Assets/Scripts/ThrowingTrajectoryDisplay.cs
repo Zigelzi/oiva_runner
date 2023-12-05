@@ -20,16 +20,16 @@ public class ThrowingTrajectoryDisplay : MonoBehaviour
         if (!_throwing) return;
         if (!_trajectoryLine) return;
 
-        if (_throwing.IsSelectingThrowDirection)
-        {
-            _trajectoryLine.enabled = true;
-            _trajectoryLine.positionCount = 2;
-            _trajectoryLine.SetPosition(0, _throwing.CarryingPosition.position);
-            _trajectoryLine.SetPosition(1, transform.position + _throwing.CurrentThrowDirection * _lineLenght);
-        }
-        else
-        {
-            _trajectoryLine.enabled = false;
-        }
+        //if (_throwing.IsSelectingThrowDirection)
+        //{
+        //    _trajectoryLine.enabled = true;
+        //    _trajectoryLine.positionCount = 2;
+        //    _trajectoryLine.SetPosition(0, _throwing.CarryingPosition.position);
+        //    _trajectoryLine.SetPosition(1, transform.position + _throwing.CurrentThrowDirection * _lineLenght);
+        //}
+        //else
+        //{
+        //    _trajectoryLine.enabled = false;
+        //}
     }
 }

@@ -41,7 +41,7 @@ public partial class @OivaActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""fcc58a97-6f2a-4eef-9b2d-213a2287ea19"",
-                    ""path"": ""<Touchscreen>/Press"",
+                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
                     ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",

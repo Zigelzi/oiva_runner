@@ -10506,6 +10506,11 @@ PrefabInstance:
       propertyPath: m_Value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4664892104593392704, guid: 57318f705e8456b438a6bd190b7a0066,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6396315419996787689, guid: 57318f705e8456b438a6bd190b7a0066,
         type: 3}
       propertyPath: m_Name
@@ -10539,6 +10544,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1433989897}
     m_Modifications:
+    - target: {fileID: -8575095120788453095, guid: 5aa6ebe07a3f59042822e9d9b30a22a6,
+        type: 3}
+      propertyPath: _throwForceIncrement
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: -8575095120788453095, guid: 5aa6ebe07a3f59042822e9d9b30a22a6,
         type: 3}
       propertyPath: _throwForceSelectionSpeed
@@ -10602,6 +10612,11 @@ PrefabInstance:
     - target: {fileID: 454546285124365306, guid: 5aa6ebe07a3f59042822e9d9b30a22a6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054588505398507407, guid: 5aa6ebe07a3f59042822e9d9b30a22a6,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2054588505398507407, guid: 5aa6ebe07a3f59042822e9d9b30a22a6,
