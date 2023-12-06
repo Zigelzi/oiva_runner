@@ -58,7 +58,7 @@ public class Throwing : MonoBehaviour
         if (!enabled) return;
 
         _currentThrowForce += _throwForceIncrement;
-        Debug.Log(_currentThrowForce);
+        _currentThrowForce = Mathf.Min(_currentThrowForce, _maxThrowForce);
     }
 
     public void Throw()

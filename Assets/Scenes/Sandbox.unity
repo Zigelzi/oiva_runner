@@ -9350,6 +9350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5baccafb1f4894d4da2c205c3ff46f89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _destroyDelay: 2
 --- !u!1 &1102249063
 GameObject:
   m_ObjectHideFlags: 0
@@ -9514,7 +9515,7 @@ PrefabInstance:
     - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 157.9
+      value: 159.07
       objectReference: {fileID: 0}
     - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
         type: 3}
@@ -14596,7 +14597,7 @@ PrefabInstance:
     - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 199.07
+      value: 214.91
       objectReference: {fileID: 0}
     - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
         type: 3}
@@ -18736,11 +18737,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1433989897}
     m_Modifications:
-    - target: {fileID: -8575095120788453095, guid: 5aa6ebe07a3f59042822e9d9b30a22a6,
-        type: 3}
-      propertyPath: _throwForceIncrement
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: -8575095120788453095, guid: 5aa6ebe07a3f59042822e9d9b30a22a6,
         type: 3}
       propertyPath: _throwForceSelectionSpeed

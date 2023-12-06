@@ -1014,7 +1014,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8854639694446260937}
   m_Layer: 5
-  m_Name: Throw_Force_Display
+  m_Name: Throw_Force_Presenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

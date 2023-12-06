@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f1c38b196b87841975fea4283ecf7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 5
+  _movementSpeed: 8
 --- !u!114 &-8575095120788453095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,9 +292,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _carryingPosition: {fileID: 4440447027601451386}
-  _maxThrowForce: 150
-  _timeToThrow: 2
-  _throwForceIncrement: 2
+  _maxThrowForce: 200
+  _timeToThrow: 1.5
+  _throwForceIncrement: 30
   onScooterPickup:
     m_PersistentCalls:
       m_Calls: []
