@@ -78,8 +78,6 @@ GameObject:
   - component: {fileID: 5596268301492993579}
   - component: {fileID: 2370033558247878384}
   - component: {fileID: -8575095120788453095}
-  - component: {fileID: 120446720922647429}
-  - component: {fileID: 2054588505398507407}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -293,47 +291,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5757bd761f324934cb26233abc139fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxThrowForce: 150
-  _throwSelectionSpeed: 1
   _carryingPosition: {fileID: 4440447027601451386}
+  _maxThrowForce: 150
+  _timeToThrow: 2
+  _throwForceIncrement: 2
   onScooterPickup:
     m_PersistentCalls:
       m_Calls: []
   onScooterThrow:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &120446720922647429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4171787857775022631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1260fac4f133f54b818fe4b58c3906e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _energyConsumption: 45
-  _maxEnergy: 100
-  _currentEnergy: -1
-  onEnergyDepleted:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &2054588505398507407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4171787857775022631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e34909a895386634694173b415fe1c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _trajectoryLine: {fileID: 3414092066806283824}
-  _lineLenght: 10
 --- !u!1001 &8495751651604826492
 PrefabInstance:
   m_ObjectHideFlags: 0

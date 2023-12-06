@@ -5,7 +5,6 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _movementSpeed = 5f;
 
     private int _currentDistanceTravelled = 0;
-    private Energy _energy;
     private Goal _goal;
     private Vector3 _startingPosition;
 
@@ -13,19 +12,16 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         _startingPosition = transform.position;
-        _energy = GetComponent<Energy>();
         _goal = FindAnyObjectByType<Goal>();
     }
 
     private void OnEnable()
     {
-        _energy.onEnergyDepleted.AddListener(Disable);
         _goal.onGoalReach.AddListener(Disable);
     }
 
     private void OnDisable()
     {
-        _energy.onEnergyDepleted.RemoveListener(Disable);
         _goal.onGoalReach.RemoveListener(Disable);
     }
 

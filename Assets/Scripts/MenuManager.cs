@@ -21,13 +21,11 @@ public class MenuManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _energy.onEnergyDepleted.AddListener(ShowMenu);
         _goal.onGoalReach.AddListener(ShowMenu);
     }
 
     private void OnDisable()
     {
-        _energy.onEnergyDepleted.RemoveListener(ShowMenu);
         _goal.onGoalReach.RemoveListener(ShowMenu);
     }
     public void RestartLevel()

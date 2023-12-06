@@ -30,6 +30,7 @@ public class Scooter : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (!_player) return;
         float distance = Vector3.Distance(transform.position, _player.position);
         onScooterDestroy?.Invoke((int)distance);
     }
