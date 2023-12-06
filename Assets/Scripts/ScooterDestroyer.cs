@@ -8,7 +8,6 @@ public class ScooterDestroyer : MonoBehaviour
         if (collision.gameObject.TryGetComponent<Scooter>(out Scooter collidedScooter))
         {
             if (!collidedScooter.IsThrown) return;
-            Debug.Log("Collided with scooter!");
             Destroy(collidedScooter.gameObject, _destroyDelay);
         }
     }

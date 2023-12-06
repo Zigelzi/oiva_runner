@@ -292,9 +292,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _carryingPosition: {fileID: 4440447027601451386}
-  _maxThrowForce: 200
+  _maxThrowForce: 150
   _timeToThrow: 1.5
-  _throwForceIncrement: 30
+  _throwForceIncrement: 20
   onScooterPickup:
     m_PersistentCalls:
       m_Calls: []

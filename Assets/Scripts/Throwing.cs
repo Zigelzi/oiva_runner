@@ -66,9 +66,8 @@ public class Throwing : MonoBehaviour
         if (_currentScooter == null) return;
         if (!enabled) return;
 
-        float xDirection = Random.Range(.2f, 1);
-        float yDirection = Random.Range(.2f, 1);
-        Vector3 throwDirection = new Vector3(xDirection, yDirection, 0);
+        float yDirection = Random.Range(1f, 2f);
+        Vector3 throwDirection = new Vector3(1, yDirection, 0);
         _currentScooter.Throw(throwDirection, _currentThrowForce);
         _currentScooter = null;
         _currentThrowForce = 0f;
@@ -84,7 +83,6 @@ public class Throwing : MonoBehaviour
     private void Disable()
     {
         StopAllCoroutines();
-        enabled = false;
     }
 
     private void UpdateThrowDistance(int additionalDistance)
