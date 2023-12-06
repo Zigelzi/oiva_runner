@@ -8349,6 +8349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 952190172}
   - component: {fileID: 952190173}
+  - component: {fileID: 952190174}
   m_Layer: 0
   m_Name: CM_Camera_Follow
   m_TagString: Untagged
@@ -8411,6 +8412,20 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1749549691}
+--- !u!114 &952190174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952190171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d493c2524b6ce4408744597ea9cadba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _traumaStep: 40
+  _traumaDecaySpeed: 2
 --- !u!1 &954868787
 GameObject:
   m_ObjectHideFlags: 0
@@ -14726,6 +14741,7 @@ GameObject:
   - component: {fileID: 1749549694}
   - component: {fileID: 1749549693}
   - component: {fileID: 1749549695}
+  - component: {fileID: 1749549696}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -14809,6 +14825,23 @@ MonoBehaviour:
   m_YawDamping: 0
   m_RollDamping: 0
   m_AngularDamping: 0
+--- !u!114 &1749549696
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749549690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 1.39
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &1760809575
 PrefabInstance:
   m_ObjectHideFlags: 0
