@@ -1997,7 +1997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &211747443
 Transform:
   m_ObjectHideFlags: 0
@@ -18739,11 +18739,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8575095120788453095, guid: 5aa6ebe07a3f59042822e9d9b30a22a6,
         type: 3}
-      propertyPath: _maxThrowForce
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: -8575095120788453095, guid: 5aa6ebe07a3f59042822e9d9b30a22a6,
-        type: 3}
       propertyPath: _debugXDirection.x
       value: 1
       objectReference: {fileID: 0}
@@ -18751,11 +18746,6 @@ PrefabInstance:
         type: 3}
       propertyPath: _debugXDirection.y
       value: 0.82
-      objectReference: {fileID: 0}
-    - target: {fileID: -8575095120788453095, guid: 5aa6ebe07a3f59042822e9d9b30a22a6,
-        type: 3}
-      propertyPath: _throwForceIncrement
-      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -8575095120788453095, guid: 5aa6ebe07a3f59042822e9d9b30a22a6,
         type: 3}

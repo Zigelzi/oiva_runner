@@ -10,7 +10,7 @@ public class Scooter : MonoBehaviour
 
     private bool _isThrown = false;
     private Rigidbody _rb;
-    private Transform _player;
+    private Vector3 _throwingPosition;
     private Transform _playerFollowTransform;
 
     public static event Action<int> onScooterDestroy;
@@ -19,7 +19,6 @@ public class Scooter : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     private void Update()
@@ -30,8 +29,7 @@ public class Scooter : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (!_player) return;
-        float distance = Vector3.Distance(transform.position, _player.position);
+        float distance = Vector3.Distance(transform.position, _throwingPosition);
         onScooterDestroy?.Invoke((int)distance);
     }
 
@@ -50,7 +48,7 @@ public class Scooter : MonoBehaviour
         _isThrown = true;
         _rb.AddForce(direction * forceAmount, ForceMode.Impulse);
         _rb.AddTorque(spinDirection, ForceMode.Impulse);
-
+        _throwingPosition = transform.position;
         StartCoroutine(DestroyAfterFlying());
     }
 
