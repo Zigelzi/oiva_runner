@@ -10,7 +10,6 @@ public class MenuManager : MonoBehaviour
     private void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
-        _energy = GameObject.FindGameObjectWithTag("Player").GetComponent<Energy>();
         _goal = FindAnyObjectByType<Goal>();
 
         if (!_canvasGroup) return;
