@@ -1242,6 +1242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 136309976}
+  - component: {fileID: 136309977}
   m_Layer: 0
   m_Name: Scooters
   m_TagString: Untagged
@@ -1261,17 +1262,25 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.18, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 326169874}
-  - {fileID: 1937806507}
-  - {fileID: 1560525978}
-  - {fileID: 1604663891}
-  - {fileID: 448914903}
-  - {fileID: 1151297697}
-  - {fileID: 765628240}
-  - {fileID: 1727524740}
+  m_Children: []
   m_Father: {fileID: 1864442757}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &136309977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136309975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffab8d33e2ce8bb4db80cfe4e8373327, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scooterPrefab: {fileID: 0}
+  _minSpawnTime: 3
+  _maxSpawnTime: 6
+  _spawnOffset: {x: 10, y: 0, z: 0}
 --- !u!1001 &140098969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2870,12 +2879,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 287221273}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &326169874 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-    type: 3}
-  m_PrefabInstance: {fileID: 7104885795013790}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &328643610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4238,65 +4241,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2811741080819535370, guid: 9fa085f01190eef4a9469fd60fa9c429,
     type: 3}
   m_PrefabInstance: {fileID: 441128652}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &448914902
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 136309976}
-    m_Modifications:
-    - target: {fileID: -7037129785713214806, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: _bounceForce
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 143.51001
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7668567025451071815, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_Name
-      value: Prop_Scooter (4)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d05bcf207577171438110b1f01f19b87, type: 3}
---- !u!4 &448914903 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-    type: 3}
-  m_PrefabInstance: {fileID: 448914902}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &454758880
 PrefabInstance:
@@ -6872,65 +6816,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6895827969415855235, guid: 3075698fcd4ea0145937f7faf0137b0e,
     type: 3}
   m_PrefabInstance: {fileID: 751800698}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &765628239
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 136309976}
-    m_Modifications:
-    - target: {fileID: -7037129785713214806, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: _bounceForce
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 188.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7668567025451071815, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_Name
-      value: Prop_Scooter (7)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d05bcf207577171438110b1f01f19b87, type: 3}
---- !u!4 &765628240 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-    type: 3}
-  m_PrefabInstance: {fileID: 765628239}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &777538890
 PrefabInstance:
@@ -9513,65 +9398,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4407524804637406038, guid: 6525af851de233e478c5cae2a97625ea,
     type: 3}
   m_PrefabInstance: {fileID: 1139946557}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1151297696
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 136309976}
-    m_Modifications:
-    - target: {fileID: -7037129785713214806, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: _bounceForce
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 159.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7668567025451071815, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_Name
-      value: Prop_Scooter (5)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d05bcf207577171438110b1f01f19b87, type: 3}
---- !u!4 &1151297697 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-    type: 3}
-  m_PrefabInstance: {fileID: 1151297696}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1152620523
 PrefabInstance:
@@ -13109,65 +12935,6 @@ Transform:
   - {fileID: 671851640}
   m_Father: {fileID: 747023803}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!1001 &1560525977
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 136309976}
-    m_Modifications:
-    - target: {fileID: -7037129785713214806, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: _bounceForce
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 78.68
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7668567025451071815, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_Name
-      value: Prop_Scooter (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d05bcf207577171438110b1f01f19b87, type: 3}
---- !u!4 &1560525978 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-    type: 3}
-  m_PrefabInstance: {fileID: 1560525977}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1565018859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13685,65 +13452,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2811741080819535370, guid: 9fa085f01190eef4a9469fd60fa9c429,
     type: 3}
   m_PrefabInstance: {fileID: 1604399107}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1604663890
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 136309976}
-    m_Modifications:
-    - target: {fileID: -7037129785713214806, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: _bounceForce
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 116
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7668567025451071815, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_Name
-      value: Prop_Scooter (3)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d05bcf207577171438110b1f01f19b87, type: 3}
---- !u!4 &1604663891 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-    type: 3}
-  m_PrefabInstance: {fileID: 1604663890}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1606141289
 PrefabInstance:
@@ -14595,65 +14303,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6895827969415855235, guid: 3075698fcd4ea0145937f7faf0137b0e,
     type: 3}
   m_PrefabInstance: {fileID: 1720329712}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1727524739
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 136309976}
-    m_Modifications:
-    - target: {fileID: -7037129785713214806, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: _bounceForce
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 214.91
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7668567025451071815, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_Name
-      value: Prop_Scooter (8)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d05bcf207577171438110b1f01f19b87, type: 3}
---- !u!4 &1727524740 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-    type: 3}
-  m_PrefabInstance: {fileID: 1727524739}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1749164032
 PrefabInstance:
@@ -16686,65 +16335,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1937046725}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1937806506
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 136309976}
-    m_Modifications:
-    - target: {fileID: -7037129785713214806, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: _bounceForce
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 53
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7668567025451071815, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_Name
-      value: Prop_Scooter (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d05bcf207577171438110b1f01f19b87, type: 3}
---- !u!4 &1937806507 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-    type: 3}
-  m_PrefabInstance: {fileID: 1937806506}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1940082762
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18448,59 +18038,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2140172764}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &7104885795013790
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 136309976}
-    m_Modifications:
-    - target: {fileID: -7037129785713214806, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: _bounceForce
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4140749177725557108, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7668567025451071815, guid: d05bcf207577171438110b1f01f19b87,
-        type: 3}
-      propertyPath: m_Name
-      value: Prop_Scooter
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d05bcf207577171438110b1f01f19b87, type: 3}
 --- !u!1001 &608210032820104401
 PrefabInstance:
   m_ObjectHideFlags: 0
