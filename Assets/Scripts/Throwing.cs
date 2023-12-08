@@ -96,7 +96,7 @@ public class Throwing : MonoBehaviour
         if (_currentScooter == null) return;
         if (!enabled) return;
 
-        float yDirection = Random.Range(1f, 2f);
+        float yDirection = Random.Range(.2f, .5f);
         Vector3 throwDirection = new Vector3(1, yDirection, 0);
         _currentScooter.Throw(throwDirection, _currentThrowForce);
         _currentScooter = null;
