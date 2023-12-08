@@ -7,7 +7,9 @@ public class Obstacle : MonoBehaviour
         if (collision.gameObject.TryGetComponent<Scooter>(out Scooter collidedScooter))
         {
             if (!collidedScooter.IsThrown) return;
-            collidedScooter.Throw(Vector3.right, 80f);
+
+            Vector3 boostDirection = new Vector3(1, 2, 0);
+            collidedScooter.Throw(boostDirection, 80f);
             Destroy(gameObject);
         }
     }
