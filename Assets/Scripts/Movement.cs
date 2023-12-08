@@ -7,22 +7,26 @@ public class Movement : MonoBehaviour
     private int _currentDistanceTravelled = 0;
     private Goal _goal;
     private Vector3 _startingPosition;
+    private Status _playerStatus;
 
     public int CurrentDistanceTravelled { get { return _currentDistanceTravelled; } }
     private void Awake()
     {
         _startingPosition = transform.position;
         _goal = FindAnyObjectByType<Goal>();
+        _playerStatus = GetComponent<Status>();
     }
 
     private void OnEnable()
     {
         _goal.onGoalReach.AddListener(Disable);
+        _playerStatus.onObstacleHit.AddListener(Disable);
     }
 
     private void OnDisable()
     {
         _goal.onGoalReach.RemoveListener(Disable);
+        _playerStatus.onObstacleHit.RemoveListener(Disable);
     }
 
     // Update is called once per frame

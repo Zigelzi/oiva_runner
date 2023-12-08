@@ -13,6 +13,7 @@ public class Throwing : MonoBehaviour
     private int _currentThrowDistance = 0;
     private float _currentThrowForce = 0f;
     private Goal _goal;
+    private Status _playerStatus;
 
     public Transform CarryingPosition { get { return _carryingPosition; } }
     public Scooter CurrentScooter { get { return _currentScooter; } }
@@ -25,16 +26,19 @@ public class Throwing : MonoBehaviour
     private void Awake()
     {
         _goal = FindAnyObjectByType<Goal>();
+        _playerStatus = GetComponent<Status>();
     }
     private void OnEnable()
     {
         _goal.onGoalReach.AddListener(Disable);
+        _playerStatus.onObstacleHit.AddListener(Disable);
         Scooter.onScooterDestroy += UpdateThrowDistance;
     }
 
     private void OnDisable()
     {
-        _goal.onGoalReach.AddListener(Disable);
+        _goal.onGoalReach.RemoveListener(Disable);
+        _playerStatus.onObstacleHit.RemoveListener(Disable);
         Scooter.onScooterDestroy -= UpdateThrowDistance;
     }
 
