@@ -8,8 +8,8 @@ public class Obstacle : MonoBehaviour
         {
             if (!collidedScooter.IsThrown) return;
 
-            Vector3 boostDirection = new Vector3(1, 2, 0);
-            collidedScooter.Throw(boostDirection, 80f);
+            Vector3 boostDirection = new Vector3(.5f, 1f, 0f);
+            collidedScooter.Throw(boostDirection, 20f);
             collidedScooter.RestartDesruction();
             Destroy(gameObject);
         }
