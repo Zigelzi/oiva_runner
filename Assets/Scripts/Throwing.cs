@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,18 +5,19 @@ public class Throwing : MonoBehaviour
 {
     [SerializeField] private Transform _carryingPosition;
     [SerializeField] private float _maxThrowForce = 20f;
-    [SerializeField] private float _timeToThrow = 2f;
-    [SerializeField] private float _throwThresholdTime = .5f;
+    [SerializeField] private float _maxTimeToInteract = .5f;
     [SerializeField] private float _throwForceIncrement = 2f;
+    [SerializeField]
+    private Vector3 _throwDirection = new Vector3(1, 1, 0);
 
     private Scooter _currentScooter;
     private int _currentThrowDistance = 0;
     private float _currentThrowForce = 0f;
-    private Coroutine _currentThrowTimer;
-    [SerializeField] private float _currentTimeToThrow = -1f;
+    private float _currentInteractionTimeRemaining = -1f;
     private Goal _goal;
     private int _interactionCount = 0;
     private Status _playerStatus;
+
 
     public Transform CarryingPosition { get { return _carryingPosition; } }
     public Scooter CurrentScooter { get { return _currentScooter; } }
@@ -32,7 +32,7 @@ public class Throwing : MonoBehaviour
         _goal = FindAnyObjectByType<Goal>();
         _playerStatus = GetComponent<Status>();
 
-        _currentTimeToThrow = _throwThresholdTime;
+        _currentInteractionTimeRemaining = _maxTimeToInteract;
     }
     private void OnEnable()
     {
@@ -45,14 +45,11 @@ public class Throwing : MonoBehaviour
     {
         if (_interactionCount > 0)
         {
-            _currentTimeToThrow -= Time.deltaTime;
+            _currentInteractionTimeRemaining -= Time.deltaTime;
         }
-        if (_currentTimeToThrow <= 0)
+        if (_currentInteractionTimeRemaining <= 0)
         {
             Throw();
-
-            if (_currentThrowTimer == null) return;
-            StopCoroutine(_currentThrowTimer);
         }
     }
 
@@ -73,7 +70,6 @@ public class Throwing : MonoBehaviour
 
             _currentScooter = newScooter;
             newScooter.Follow(_carryingPosition);
-            _currentThrowTimer = StartCoroutine(StartThrowTimer());
         }
     }
 
@@ -84,7 +80,7 @@ public class Throwing : MonoBehaviour
 
         if (_interactionCount > 0)
         {
-            _currentTimeToThrow = _throwThresholdTime;
+            _currentInteractionTimeRemaining = _maxTimeToInteract;
         }
         _interactionCount += 1;
         _currentThrowForce += _throwForceIncrement;
@@ -96,30 +92,27 @@ public class Throwing : MonoBehaviour
         if (_currentScooter == null) return;
         if (!enabled) return;
 
-        float yDirection = Random.Range(.2f, .5f);
-        Vector3 throwDirection = new Vector3(1, yDirection, 0);
-        _currentScooter.Throw(throwDirection, _currentThrowForce);
+        _currentScooter.Throw(_throwDirection, _currentThrowForce);
         _currentScooter = null;
         _currentThrowForce = 0f;
         _interactionCount = 0;
-        _currentTimeToThrow = _throwThresholdTime;
+        _currentInteractionTimeRemaining = _maxTimeToInteract;
         onScooterThrow?.Invoke();
-    }
-
-    private IEnumerator StartThrowTimer()
-    {
-        yield return new WaitForSeconds(_timeToThrow);
-        Throw();
     }
 
     private void Disable()
     {
-        StopAllCoroutines();
+        // Add behaviour that needs to be stopped when game ends.
     }
 
     private void UpdateThrowDistance(int additionalDistance)
     {
         _currentThrowDistance += additionalDistance;
 
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawLine(_carryingPosition.position, _carryingPosition.position + _throwDirection);
     }
 }
