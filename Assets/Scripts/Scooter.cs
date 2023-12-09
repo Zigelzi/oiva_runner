@@ -8,6 +8,7 @@ public class Scooter : MonoBehaviour
     [SerializeField] private float _despawnDuration = 2f; // Seconds.
     [SerializeField] private Vector2 spinAmount = new Vector2(1f, 15f);
 
+    Coroutine _currentDestructionCoroutine;
     private bool _isThrown = false;
     private Rigidbody _rb;
     private Vector3 _throwingPosition;
@@ -49,7 +50,17 @@ public class Scooter : MonoBehaviour
         _rb.AddForce(direction * forceAmount, ForceMode.Impulse);
         _rb.AddTorque(spinDirection, ForceMode.Impulse);
         _throwingPosition = transform.position;
-        StartCoroutine(DestroyAfterFlying());
+        _currentDestructionCoroutine = StartCoroutine(DestroyAfterFlying());
+    }
+
+    public void RestartDesruction()
+    {
+        if (_currentDestructionCoroutine != null)
+        {
+            StopCoroutine(_currentDestructionCoroutine);
+
+        }
+        _currentDestructionCoroutine = StartCoroutine(DestroyAfterFlying());
     }
 
     private IEnumerator DestroyAfterFlying()

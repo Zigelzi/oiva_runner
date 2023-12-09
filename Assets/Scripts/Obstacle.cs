@@ -10,6 +10,7 @@ public class Obstacle : MonoBehaviour
 
             Vector3 boostDirection = new Vector3(1, 2, 0);
             collidedScooter.Throw(boostDirection, 80f);
+            collidedScooter.RestartDesruction();
             Destroy(gameObject);
         }
     }

@@ -19172,6 +19172,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8575095120788453095, guid: 5aa6ebe07a3f59042822e9d9b30a22a6,
         type: 3}
+      propertyPath: _throwDirection.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: -8575095120788453095, guid: 5aa6ebe07a3f59042822e9d9b30a22a6,
+        type: 3}
       propertyPath: _debugXDirection.x
       value: 1
       objectReference: {fileID: 0}
