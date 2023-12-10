@@ -29,14 +29,14 @@ public class Throwing : MonoBehaviour
 
     private void Awake()
     {
-        _goal = FindAnyObjectByType<Goal>();
+        //_goal = FindAnyObjectByType<Goal>();
         _playerStatus = GetComponent<Status>();
 
         _currentInteractionTimeRemaining = _maxTimeToInteract;
     }
     private void OnEnable()
     {
-        _goal.onGoalReach.AddListener(Disable);
+        //_goal.onGoalReach.AddListener(Disable);
         _playerStatus.onObstacleHit.AddListener(Disable);
         Scooter.onScooterDestroy += UpdateThrowDistance;
     }
@@ -55,7 +55,7 @@ public class Throwing : MonoBehaviour
 
     private void OnDisable()
     {
-        _goal.onGoalReach.RemoveListener(Disable);
+        //_goal.onGoalReach.RemoveListener(Disable);
         _playerStatus.onObstacleHit.RemoveListener(Disable);
         Scooter.onScooterDestroy -= UpdateThrowDistance;
     }

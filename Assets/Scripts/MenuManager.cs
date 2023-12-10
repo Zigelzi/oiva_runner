@@ -11,7 +11,7 @@ public class MenuManager : MonoBehaviour
     private void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
-        _goal = FindAnyObjectByType<Goal>();
+        //_goal = FindAnyObjectByType<Goal>();
         _playerStatus = GameObject.FindGameObjectWithTag("Player").GetComponent<Status>();
 
         if (!_canvasGroup) return;
@@ -22,13 +22,13 @@ public class MenuManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _goal.onGoalReach.AddListener(ShowMenu);
+        //_goal.onGoalReach.AddListener(ShowMenu);
         _playerStatus.onObstacleHit.AddListener(ShowMenu);
     }
 
     private void OnDisable()
     {
-        _goal.onGoalReach.RemoveListener(ShowMenu);
+        //_goal.onGoalReach.RemoveListener(ShowMenu);
         _playerStatus.onObstacleHit.RemoveListener(ShowMenu);
     }
     public void RestartLevel()

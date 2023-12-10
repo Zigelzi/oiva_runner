@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1300521431564234395}
   - component: {fileID: 4187526893388805331}
   m_Layer: 0
-  m_Name: Scooters
+  m_Name: Obstacles_Scooters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,8 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffab8d33e2ce8bb4db80cfe4e8373327, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _obstaclePrefab: {fileID: 221643125781412363, guid: 0bd7efa40592c9f4289ba2147ed4d43e,
+    type: 3}
   _scooterPrefab: {fileID: 7668567025451071815, guid: d05bcf207577171438110b1f01f19b87,
     type: 3}
   _minSpawnTime: 2.5
   _maxSpawnTime: 4
-  _spawnOffset: {x: 10, y: 0, z: 0}
+  _spawnOffset: {x: 40, y: 0, z: 0}

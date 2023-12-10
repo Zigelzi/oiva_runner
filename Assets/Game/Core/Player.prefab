@@ -293,9 +293,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _carryingPosition: {fileID: 4440447027601451386}
-  _maxThrowForce: 250
+  _maxThrowForce: 150
   _maxTimeToInteract: 0.5
-  _throwForceIncrement: 40
+  _throwForceIncrement: 30
   _throwDirection: {x: 1, y: 0.4, z: 0}
   onScooterPickup:
     m_PersistentCalls:

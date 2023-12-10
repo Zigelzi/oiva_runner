@@ -101,7 +101,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7668567025451071815}
-  m_Material: {fileID: 13400000, guid: 616210d2550072b46bc6a8a0f745172b, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _despawnDuration: 10
+  _minForce: 100
   spinAmount: {x: 1, y: 15}
 --- !u!1001 &3934975982480391877
 PrefabInstance:

@@ -13,19 +13,19 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         _startingPosition = transform.position;
-        _goal = FindAnyObjectByType<Goal>();
+        //_goal = FindAnyObjectByType<Goal>();
         _playerStatus = GetComponent<Status>();
     }
 
     private void OnEnable()
     {
-        _goal.onGoalReach.AddListener(Disable);
+        //_goal.onGoalReach.AddListener(Disable);
         _playerStatus.onObstacleHit.AddListener(Disable);
     }
 
     private void OnDisable()
     {
-        _goal.onGoalReach.RemoveListener(Disable);
+        //_goal.onGoalReach.RemoveListener(Disable);
         _playerStatus.onObstacleHit.RemoveListener(Disable);
     }
 

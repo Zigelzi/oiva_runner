@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 public class Scooter : MonoBehaviour
 {
     [SerializeField] private float _despawnDuration = 2f; // Seconds.
+    [SerializeField] private float _minForce = 40f;
     [SerializeField] private Vector2 spinAmount = new Vector2(1f, 15f);
 
     Coroutine _currentDestructionCoroutine;
@@ -34,6 +35,7 @@ public class Scooter : MonoBehaviour
         onScooterDestroy?.Invoke((int)distance);
     }
 
+    #region Public methods
     public void Follow(Transform newPlayerFollowTransform)
     {
         _playerFollowTransform = newPlayerFollowTransform;
@@ -42,12 +44,14 @@ public class Scooter : MonoBehaviour
 
     public void Throw(Vector3 direction, float forceAmount)
     {
-        Vector3 spinDirection = new Vector3(Random.Range(spinAmount.x, spinAmount.y), Random.Range(spinAmount.x, spinAmount.y), Random.Range(spinAmount.x, spinAmount.y));
+        Vector3 spinDirection = new Vector3(Random.Range(spinAmount.x, spinAmount.y),
+            Random.Range(spinAmount.x, spinAmount.y),
+            Random.Range(spinAmount.x, spinAmount.y));
 
         _playerFollowTransform = null;
         _rb.isKinematic = false;
         _isThrown = true;
-        _rb.AddForce(direction * forceAmount, ForceMode.Impulse);
+        _rb.AddForce(direction * (_minForce + forceAmount), ForceMode.Impulse);
         _rb.AddTorque(spinDirection, ForceMode.Impulse);
         _throwingPosition = transform.position;
         _currentDestructionCoroutine = StartCoroutine(DestroyAfterFlying());
@@ -62,6 +66,7 @@ public class Scooter : MonoBehaviour
         }
         _currentDestructionCoroutine = StartCoroutine(DestroyAfterFlying());
     }
+    #endregion
 
     private IEnumerator DestroyAfterFlying()
     {
