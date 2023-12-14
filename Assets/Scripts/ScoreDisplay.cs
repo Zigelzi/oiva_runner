@@ -22,7 +22,7 @@ public class ScoreDisplay : MonoBehaviour
     {
         if (_travelDistance)
         {
-            _travelDistance.text = _movement.CurrentDistanceTravelled.ToString();
+            _travelDistance.text = _movement.CurrentDistanceTravelled.ToString("0");
         }
         if (_scooterThrowDistance)
         {

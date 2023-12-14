@@ -2,45 +2,43 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private float _movementSpeed = 5f;
+    [SerializeField] private Vector3 _velocity = Vector3.zero;
+    [SerializeField] private float _maxAcceleration = 10f;
+    [SerializeField] private float _maxXVelocity = 8f;
 
-    private int _currentDistanceTravelled = 0;
-    private Goal _goal;
-    private Vector3 _startingPosition;
+    private float _currentDistanceTravelled = 0;
     private Status _playerStatus;
 
-    public int CurrentDistanceTravelled { get { return _currentDistanceTravelled; } }
+    public float CurrentDistanceTravelled { get { return _currentDistanceTravelled; } }
     private void Awake()
     {
-        _startingPosition = transform.position;
-        //_goal = FindAnyObjectByType<Goal>();
         _playerStatus = GetComponent<Status>();
     }
 
     private void OnEnable()
     {
-        //_goal.onGoalReach.AddListener(Disable);
         _playerStatus.onObstacleHit.AddListener(Disable);
     }
 
     private void OnDisable()
     {
-        //_goal.onGoalReach.RemoveListener(Disable);
         _playerStatus.onObstacleHit.RemoveListener(Disable);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.right * _movementSpeed * Time.deltaTime);
-        GetTravelDistance();
+        Vector3 desiredVelocity = Vector3.right * _maxXVelocity;
+        float maxVelocityChange = _maxAcceleration * Time.deltaTime;
+
+        if (_velocity.x < desiredVelocity.x)
+        {
+            _velocity.x = Mathf.Min(_velocity.x + maxVelocityChange, desiredVelocity.x);
+        }
+
+        _currentDistanceTravelled += _velocity.x * Time.deltaTime;
     }
 
-    private void GetTravelDistance()
-    {
-        _currentDistanceTravelled = (int)Vector3.Distance(_startingPosition, transform.position);
-
-    }
 
     private void Disable()
     {
