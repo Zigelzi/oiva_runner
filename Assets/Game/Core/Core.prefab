@@ -210,6 +210,9 @@ MonoBehaviour:
   - {fileID: 1221401086409713209, guid: 09245743ddd54a748880695a4d978491, type: 3}
   - {fileID: 4791686085311145408, guid: 51c094592f4f16447b8c503f4abeae2b, type: 3}
   _numberOfLevels: 5
+  _scooterPrefab: {fileID: -7037129785713214806, guid: d05bcf207577171438110b1f01f19b87,
+    type: 3}
+  _spawnOffset: {x: 25, y: 0, z: 5}
 --- !u!1 &3312507242282988545
 GameObject:
   m_ObjectHideFlags: 0
