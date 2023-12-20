@@ -6,7 +6,9 @@ using Random = UnityEngine.Random;
 public class Scooter : MonoBehaviour
 {
     [SerializeField] private float _despawnDuration = 2f; // Seconds.
+    [SerializeField] private float _despawnOffset = 25f;
     [SerializeField] private float _minForce = 40f;
+    [SerializeField] private float _movementSpeed = 8f;
     [SerializeField] private Vector2 spinAmount = new Vector2(1f, 15f);
 
     Coroutine _currentDestructionCoroutine;
@@ -25,12 +27,24 @@ public class Scooter : MonoBehaviour
 
     private void Update()
     {
-        if (_playerFollowTransform == null) return;
-        transform.position = _playerFollowTransform.position;
+        if (_playerFollowTransform == null && !_isThrown)
+        {
+            transform.Translate(Vector3.left * _movementSpeed * Time.deltaTime, Space.World);
+        }
+        if (_playerFollowTransform)
+        {
+            transform.position = _playerFollowTransform.position;
+        }
+
+        if (transform.position.x <= -_despawnOffset)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnDestroy()
     {
+        if (!_isThrown) return;
         float distance = Vector3.Distance(transform.position, _throwingPosition);
         onScooterDestroy?.Invoke((int)distance);
     }

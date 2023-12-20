@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
 
-public class LevelMover : MonoBehaviour
+public class Street : MonoBehaviour
 {
     [SerializeField] private float _movementSpeed = 8f;
     [SerializeField] private float _despawnOffset = 25f;
 
-    public static event Action onLevelDestroy;
+    public static event Action onStreetDestroy;
 
     // Update is called once per frame
     void Update()
@@ -15,7 +15,7 @@ public class LevelMover : MonoBehaviour
 
         if (transform.position.x <= -_despawnOffset)
         {
-            onLevelDestroy?.Invoke();
+            onStreetDestroy?.Invoke();
             Destroy(gameObject);
         }
     }

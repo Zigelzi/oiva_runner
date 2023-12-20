@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Sandbox.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Street_Prefabs.unity
+    guid: 80d88e9b81ba7394d9ebf3472ee168ec
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 0616210ed0951084698d75ea02f099a1,
       type: 2}

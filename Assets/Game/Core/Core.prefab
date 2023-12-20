@@ -113,6 +113,37 @@ MonoBehaviour:
   m_AmplitudeGain: 1.39
   m_FrequencyGain: 1
   mNoiseOffsets: {x: -293.5115, y: -646.19727, z: -420.69687}
+--- !u!1 &1149419514911345063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 65082968093157109}
+  m_Layer: 0
+  m_Name: Scooters
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &65082968093157109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149419514911345063}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4856835096672971665}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1616440505782285482
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,7 +204,7 @@ GameObject:
   - component: {fileID: 4856835096672971665}
   - component: {fileID: 3394135553220801311}
   m_Layer: 0
-  m_Name: LevelSpawner
+  m_Name: StreetSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,7 +222,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 65082968093157109}
   m_Father: {fileID: 8275627968625143904}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3394135553220801311
@@ -206,12 +238,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6accd6f0e22f149be745fe1134727e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelPrefabs:
-  - {fileID: 1221401086409713209, guid: 09245743ddd54a748880695a4d978491, type: 3}
+  _streetPrefabs:
   - {fileID: 4791686085311145408, guid: 51c094592f4f16447b8c503f4abeae2b, type: 3}
-  _numberOfLevels: 5
+  - {fileID: 1221401086409713209, guid: 09245743ddd54a748880695a4d978491, type: 3}
+  _initialNumberOfStreets: 5
   _scooterPrefab: {fileID: -7037129785713214806, guid: d05bcf207577171438110b1f01f19b87,
     type: 3}
+  _scooterSpawn: {fileID: 65082968093157109}
   _spawnOffset: {x: 25, y: 0, z: 5}
 --- !u!1 &3312507242282988545
 GameObject:

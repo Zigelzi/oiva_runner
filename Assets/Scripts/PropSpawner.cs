@@ -57,14 +57,14 @@ public class PropSpawner : MonoBehaviour
         if (previousScooter == null)
         {
             Vector3 spawnPosition = _currentObstacle.transform.position - _spawnOffset + _scooterMinOffset;
-            instantiatedScooter = Instantiate(_scooterPrefab, spawnPosition, spawnRotation, transform);
+            instantiatedScooter = Instantiate(_scooterPrefab, spawnPosition, spawnRotation, _player);
         }
         else
         {
             float distanceToObstacle = _currentObstacle.transform.position.x - previousScooter.transform.position.x;
             float spawnPosX = _currentObstacle.transform.position.x - distanceToObstacle / 2f;
             Vector3 spawnPosition = new Vector3(spawnPosX, previousScooter.transform.position.y, previousScooter.transform.position.z);
-            instantiatedScooter = Instantiate(_scooterPrefab, spawnPosition, spawnRotation, transform);
+            instantiatedScooter = Instantiate(_scooterPrefab, spawnPosition, spawnRotation, _player);
         }
 
         return instantiatedScooter.GetComponent<Scooter>();

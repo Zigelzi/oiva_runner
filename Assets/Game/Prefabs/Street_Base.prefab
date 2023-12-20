@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 584745763930944016}
   - component: {fileID: -1602100747795730008}
   m_Layer: 0
-  m_Name: Level_Base
+  m_Name: Street_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
