@@ -6,7 +6,7 @@
             "id": "c45038ed-1e5b-4310-8a39-ed42029cde09",
             "actions": [
                 {
-                    "name": "Throw",
+                    "name": "Touch",
                     "type": "Button",
                     "id": "6d7dc1eb-aa7c-4119-abea-f0bd10143692",
                     "expectedControlType": "Button",
@@ -23,7 +23,7 @@
                     "interactions": "Tap",
                     "processors": "",
                     "groups": "",
-                    "action": "Throw",
+                    "action": "Touch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

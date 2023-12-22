@@ -28,7 +28,7 @@ public partial class @OivaActions: IInputActionCollection2, IDisposable
             ""id"": ""c45038ed-1e5b-4310-8a39-ed42029cde09"",
             ""actions"": [
                 {
-                    ""name"": ""Throw"",
+                    ""name"": ""Touch"",
                     ""type"": ""Button"",
                     ""id"": ""6d7dc1eb-aa7c-4119-abea-f0bd10143692"",
                     ""expectedControlType"": ""Button"",
@@ -45,7 +45,7 @@ public partial class @OivaActions: IInputActionCollection2, IDisposable
                     ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Throw"",
+                    ""action"": ""Touch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -62,7 +62,7 @@ public partial class @OivaActions: IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
+        m_Player_Touch = m_Player.FindAction("Touch", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -124,12 +124,12 @@ public partial class @OivaActions: IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-    private readonly InputAction m_Player_Throw;
+    private readonly InputAction m_Player_Touch;
     public struct PlayerActions
     {
         private @OivaActions m_Wrapper;
         public PlayerActions(@OivaActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Throw => m_Wrapper.m_Player_Throw;
+        public InputAction @Touch => m_Wrapper.m_Player_Touch;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -139,16 +139,16 @@ public partial class @OivaActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
-            @Throw.started += instance.OnThrow;
-            @Throw.performed += instance.OnThrow;
-            @Throw.canceled += instance.OnThrow;
+            @Touch.started += instance.OnTouch;
+            @Touch.performed += instance.OnTouch;
+            @Touch.canceled += instance.OnTouch;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
         {
-            @Throw.started -= instance.OnThrow;
-            @Throw.performed -= instance.OnThrow;
-            @Throw.canceled -= instance.OnThrow;
+            @Touch.started -= instance.OnTouch;
+            @Touch.performed -= instance.OnTouch;
+            @Touch.canceled -= instance.OnTouch;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -177,6 +177,6 @@ public partial class @OivaActions: IInputActionCollection2, IDisposable
     }
     public interface IPlayerActions
     {
-        void OnThrow(InputAction.CallbackContext context);
+        void OnTouch(InputAction.CallbackContext context);
     }
 }

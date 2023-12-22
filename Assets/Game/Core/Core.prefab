@@ -880,6 +880,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5596268301492993579, guid: 5aa6ebe07a3f59042822e9d9b30a22a6,
+        type: 3}
+      propertyPath: _movementTouchAreaHeight
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
