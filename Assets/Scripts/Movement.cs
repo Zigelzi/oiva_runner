@@ -44,7 +44,6 @@ public class Movement : MonoBehaviour
     {
         if (isMovingRight)
         {
-            Debug.Log("moving right!");
             transform.Translate(Vector3.back * Time.deltaTime * 2f);
         }
         else

@@ -6,8 +6,8 @@
             "id": "c45038ed-1e5b-4310-8a39-ed42029cde09",
             "actions": [
                 {
-                    "name": "Touch",
-                    "type": "Button",
+                    "name": "Throw",
+                    "type": "PassThrough",
                     "id": "6d7dc1eb-aa7c-4119-abea-f0bd10143692",
                     "expectedControlType": "Button",
                     "processors": "",
@@ -23,7 +23,7 @@
                     "interactions": "Tap",
                     "processors": "",
                     "groups": "",
-                    "action": "Touch",
+                    "action": "Throw",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
