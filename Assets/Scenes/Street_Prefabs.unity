@@ -172,6 +172,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3486909922670163099, guid: 274d0a5f1abc85d43963706ef1f6fdfd,
+        type: 3}
+      propertyPath: m_XDamping
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5206757196550328341, guid: 274d0a5f1abc85d43963706ef1f6fdfd,
         type: 3}
       propertyPath: m_LocalPosition.x
