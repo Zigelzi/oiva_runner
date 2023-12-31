@@ -32,6 +32,7 @@ public class Movement : MonoBehaviour
         Vector3 desiredVelocity = Vector3.right * _maxXVelocity;
         float maxVelocityChange = _maxAcceleration * Time.deltaTime;
 
+
         if (_velocity.x < desiredVelocity.x)
         {
             _velocity.x = Mathf.Min(_velocity.x + maxVelocityChange, desiredVelocity.x);
@@ -42,15 +43,12 @@ public class Movement : MonoBehaviour
 
     public void Move(bool isMovingRight)
     {
-        if (isMovingRight)
-        {
-            transform.Translate(Vector3.back * Time.deltaTime * 2f);
-        }
-        else
-        {
-            transform.Translate(Vector3.forward * Time.deltaTime * 2f);
-        }
-        Mathf.Clamp(transform.position.z, -_maxZMovement, _maxZMovement);
+        Vector3 movementDirection = isMovingRight ? Vector3.back : Vector3.forward;
+        Debug.Log(movementDirection * Time.deltaTime * 2f);
+        Vector3 newPosition = transform.localPosition + movementDirection * Time.deltaTime * 2f;
+        newPosition.z = Mathf.Clamp(newPosition.z, -_maxZMovement, _maxZMovement);
+        transform.localPosition = newPosition;
+
     }
 
 
