@@ -3,8 +3,10 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField] private Vector3 _velocity = Vector3.zero;
-    [SerializeField] private float _maxAcceleration = 10f;
-    [SerializeField] private float _maxXVelocity = 8f;
+    [SerializeField] private float _maxForwardsAcceleration = 10f;
+    [SerializeField] private float _maxForwardsVelocity = 8f;
+    [SerializeField] private float _maxSidewaysAcceleration = 10f;
+    [SerializeField] private float _maxSidewaysVelocity = 8f;
     [SerializeField, Range(0, 5f)] private float _maxZMovement = 3.5f;
 
     private float _currentDistanceTravelled = 0;
@@ -29,13 +31,13 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 desiredVelocity = Vector3.right * _maxXVelocity;
-        float maxVelocityChange = _maxAcceleration * Time.deltaTime;
+        Vector3 desiredForwardsVelocity = Vector3.right * _maxForwardsVelocity;
+        float maxForwardsVelocityChange = _maxForwardsAcceleration * Time.deltaTime;
 
 
-        if (_velocity.x < desiredVelocity.x)
+        if (_velocity.x < desiredForwardsVelocity.x)
         {
-            _velocity.x = Mathf.Min(_velocity.x + maxVelocityChange, desiredVelocity.x);
+            _velocity.x = Mathf.Min(_velocity.x + maxForwardsVelocityChange, desiredForwardsVelocity.x);
         }
 
         _currentDistanceTravelled += _velocity.x * Time.deltaTime;
@@ -44,8 +46,8 @@ public class Movement : MonoBehaviour
     public void Move(bool isMovingRight)
     {
         Vector3 movementDirection = isMovingRight ? Vector3.back : Vector3.forward;
-        Debug.Log(movementDirection * Time.deltaTime * 2f);
-        Vector3 newPosition = transform.localPosition + movementDirection * Time.deltaTime * 2f;
+        Vector3 sidewaysMovement = movementDirection * _maxSidewaysVelocity * Time.deltaTime;
+        Vector3 newPosition = transform.localPosition + sidewaysMovement;
         newPosition.z = Mathf.Clamp(newPosition.z, -_maxZMovement, _maxZMovement);
         transform.localPosition = newPosition;
 
