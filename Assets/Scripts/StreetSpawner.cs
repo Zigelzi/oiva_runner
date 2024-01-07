@@ -45,6 +45,9 @@ public class StreetSpawner : MonoBehaviour
             Transform instantiatedStreet = Instantiate(_streetPrefabs[spawnIndex], spawnPosition, Quaternion.identity, transform);
 
             if (_propPrefabs.Length < 1) continue;
+
+            // Prevent spawning prop on top of player in the beginning.
+            if (i == 0 && additionalXOffset == 0) continue;
             GameObject propToSpawn = _propPrefabs[ChoosePropIndexByWeights()];
             SpawnProp(instantiatedStreet, propToSpawn);
 

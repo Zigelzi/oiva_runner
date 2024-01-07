@@ -45,7 +45,6 @@ public class Movement : MonoBehaviour
 
     public void Move(bool isMovingRight)
     {
-        Debug.Log("Moving!");
         Vector3 movementDirection = isMovingRight ? Vector3.back : Vector3.forward;
         Vector3 sidewaysMovement = movementDirection * _maxSidewaysVelocity * Time.deltaTime;
         Vector3 newPosition = transform.localPosition + sidewaysMovement;

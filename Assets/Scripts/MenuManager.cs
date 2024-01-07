@@ -29,7 +29,6 @@ public class MenuManager : MonoBehaviour
     public void RestartLevel()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        Debug.Log("Clicked!" + currentSceneIndex);
         SceneManager.LoadScene(currentSceneIndex);
     }
 

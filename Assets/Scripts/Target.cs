@@ -8,7 +8,6 @@ public class Target : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent<Scooter>(out Scooter collidedScooter))
         {
-            Debug.Log($"Scored {_scoreAmount} points!");
             Rigidbody scooterRb = collidedScooter.GetComponent<Rigidbody>();
             Vector3 boostDirection = new Vector3(Random.Range(10, 50), Random.Range(1, 10), 0);
             scooterRb.AddForce(boostDirection, ForceMode.Impulse);
