@@ -5,8 +5,11 @@ public class StreetSpawner : MonoBehaviour
 {
     [SerializeField] private List<Transform> _streetPrefabs;
     [SerializeField] private int _initialNumberOfStreets = 3;
+    [SerializeField] private GameObject[] _propPrefabs;
+    [SerializeField] private float[] _propSpawnWeights = { 1, 2 };
     [SerializeField] private Scooter _scooterPrefab;
-    [SerializeField] private Transform _scooterSpawn;
+    [SerializeField] private Obstacle _obstaclePrefab;
+    [SerializeField] private Transform _propSpawn;
     [SerializeField] private Vector3 _spawnOffset = new Vector3(25, 0, 5);
 
     private void Awake()
@@ -40,18 +43,49 @@ public class StreetSpawner : MonoBehaviour
                 transform.position.y + _spawnOffset.y,
                 _spawnOffset.z);
             Transform instantiatedStreet = Instantiate(_streetPrefabs[spawnIndex], spawnPosition, Quaternion.identity, transform);
-            SpawnScooter(instantiatedStreet);
+
+            if (_propPrefabs.Length < 1) continue;
+            GameObject propToSpawn = _propPrefabs[ChoosePropIndexByWeights()];
+            SpawnProp(instantiatedStreet, propToSpawn);
+
         }
     }
 
-    private void SpawnScooter(Transform parent)
+    private void SpawnProp(Transform parent, GameObject prefab)
     {
-        if (!_scooterPrefab) return;
-        if (!_scooterSpawn) return;
+        if (!_propSpawn) return;
 
         Quaternion spawnRotation = Quaternion.Euler(0, Random.Range(60f, 120f), 0);
         Vector3 spawnPosition = new Vector3(parent.position.x, parent.position.y, parent.position.z - 5f);
-        Instantiate(_scooterPrefab, spawnPosition, spawnRotation, _scooterSpawn);
+        Instantiate(prefab, spawnPosition, spawnRotation, _propSpawn);
 
+    }
+
+    private int ChoosePropIndexByWeights()
+    {
+        if (_propSpawnWeights.Length < 1) return 0;
+
+        float totalWeight = 0;
+
+        foreach (float weight in _propSpawnWeights)
+        {
+            totalWeight += weight;
+        }
+
+        float point = Random.Range(0, totalWeight);
+
+        for (int i = 0; i < _propSpawnWeights.Length; i++)
+        {
+            if (point < _propSpawnWeights[i])
+            {
+                return i;
+            }
+            else
+            {
+                point -= _propSpawnWeights[i];
+            }
+        }
+
+        return _propSpawnWeights.Length - 1;
     }
 }

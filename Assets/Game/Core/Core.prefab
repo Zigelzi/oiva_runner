@@ -123,7 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 65082968093157109}
   m_Layer: 0
-  m_Name: Scooters
+  m_Name: Props
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,7 +244,9 @@ MonoBehaviour:
   _initialNumberOfStreets: 5
   _scooterPrefab: {fileID: -7037129785713214806, guid: d05bcf207577171438110b1f01f19b87,
     type: 3}
-  _scooterSpawn: {fileID: 65082968093157109}
+  _obstaclePrefab: {fileID: 3926015190633096339, guid: bfdcb8063b1b13d4eb5d4794a4ccc71f,
+    type: 3}
+  _propSpawn: {fileID: 65082968093157109}
   _spawnOffset: {x: 25, y: 0, z: 5}
 --- !u!1 &3312507242282988545
 GameObject:

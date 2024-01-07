@@ -172,11 +172,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3486909922670163099, guid: 274d0a5f1abc85d43963706ef1f6fdfd,
+    - target: {fileID: 3394135553220801311, guid: 274d0a5f1abc85d43963706ef1f6fdfd,
         type: 3}
-      propertyPath: m_XDamping
-      value: 0.1
+      propertyPath: _propPrefabs.Array.size
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3394135553220801311, guid: 274d0a5f1abc85d43963706ef1f6fdfd,
+        type: 3}
+      propertyPath: _propPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1286434808392608329, guid: bfdcb8063b1b13d4eb5d4794a4ccc71f,
+        type: 3}
     - target: {fileID: 5206757196550328341, guid: 274d0a5f1abc85d43963706ef1f6fdfd,
         type: 3}
       propertyPath: m_LocalPosition.x
