@@ -22,8 +22,6 @@ public class InputHandler : MonoBehaviour
         _actions.Player.Throw.performed += OnThrow;
         _movementBoundary = Screen.height * _movementTouchAreaHeight;
 
-        Debug.Log($"Screen height: {Screen.height}");
-        Debug.Log($"Screen wifth: {Screen.width}");
     }
 
     private void OnEnable()

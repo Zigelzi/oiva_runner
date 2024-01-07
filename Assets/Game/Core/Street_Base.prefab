@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 584745763930944016}
   - component: {fileID: -1602100747795730008}
+  - component: {fileID: -5508011103702932186}
   m_Layer: 0
   m_Name: Street_Base
   m_TagString: Untagged
@@ -44,4 +45,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7e06a4bb59e0f4aa4988aee13f4ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5508011103702932186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6572587234529602509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07fdf1d5334e0e1499ea90de753d1619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _movementSpeed: 8
+  _despawnOffset: 25
