@@ -6,6 +6,7 @@ public class StreetSpawner : MonoBehaviour
     [SerializeField] private List<Transform> _streetPrefabs;
     [SerializeField] private int _initialNumberOfStreets = 3;
     [SerializeField] private GameObject[] _propPrefabs;
+    [SerializeField, Range(0, 3f)] private float _propSpawnPositionVariance = 2f;
     [SerializeField] private float[] _propSpawnWeights = { 1, 2 };
     [SerializeField] private Scooter _scooterPrefab;
     [SerializeField] private Obstacle _obstaclePrefab;
@@ -58,8 +59,12 @@ public class StreetSpawner : MonoBehaviour
     {
         if (!_propSpawn) return;
 
+        float parentPositionOffset = 5f;
+        float spawnPositionVariance = Random.Range(-_propSpawnPositionVariance, _propSpawnPositionVariance);
+        float spawnZPosition = parent.position.z - parentPositionOffset + spawnPositionVariance;
+
         Quaternion spawnRotation = Quaternion.Euler(0, Random.Range(60f, 120f), 0);
-        Vector3 spawnPosition = new Vector3(parent.position.x, parent.position.y, parent.position.z - 5f);
+        Vector3 spawnPosition = new Vector3(parent.position.x, parent.position.y, spawnZPosition);
         Instantiate(prefab, spawnPosition, spawnRotation, _propSpawn);
 
     }
