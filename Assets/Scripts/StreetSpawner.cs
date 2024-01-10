@@ -50,8 +50,22 @@ public class StreetSpawner : MonoBehaviour
 
             if (_propPrefabs.Length < 1) continue;
 
-            // Prevent spawning prop on top of player in the beginning.
-            if (i == 0 && additionalXOffset == 0) continue;
+
+
+            if (isInitial)
+            {
+                if (i == 0) continue;
+                if (i == 1)
+                {
+                    SpawnProp(instantiatedStreet, _propPrefabs[1]);
+                    continue;
+                }
+                if (i == 2)
+                {
+                    SpawnProp(instantiatedStreet, _propPrefabs[0]);
+                    continue;
+                }
+            }
             GameObject propToSpawn = _propPrefabs[ChoosePropIndexByWeights()];
             SpawnProp(instantiatedStreet, propToSpawn);
 
