@@ -16,7 +16,7 @@ public class StreetSpawner : MonoBehaviour
     private void Awake()
     {
         if (_streetPrefabs.Count <= 0) return;
-        SpawnStreet(_initialNumberOfStreets);
+        SpawnStreet(_initialNumberOfStreets, true);
     }
 
     private void OnEnable()
@@ -31,11 +31,14 @@ public class StreetSpawner : MonoBehaviour
 
     private void SpawnAdditionalLevels()
     {
-        SpawnStreet(1, 100);
+        SpawnStreet(1, false);
     }
 
-    private void SpawnStreet(int spawnCount, int additionalXOffset = 0)
+
+
+    private void SpawnStreet(int spawnCount, bool isInitial)
     {
+        float additionalXOffset = isInitial ? 0 : (_initialNumberOfStreets - 1) * _spawnOffset.x;
         for (int i = 0; i < spawnCount; i++)
         {
             int spawnIndex = Random.Range(0, _streetPrefabs.Count);
