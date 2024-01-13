@@ -3,14 +3,13 @@ using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[RequireComponent(typeof(EnvironmentMomement), typeof(Rigidbody))]
+[RequireComponent(typeof(EnvironmentDespawner), typeof(Rigidbody))]
 public class Scooter : MonoBehaviour
 {
     [SerializeField] private float _despawnDuration = 2f; // Seconds.
     [SerializeField] private float _minForce = 40f;
     [SerializeField] private Vector2 spinAmount = new Vector2(1f, 15f);
 
-    EnvironmentMomement _environmentMovement;
     Coroutine _currentDestructionCoroutine;
     private bool _isThrown = false;
     private Rigidbody _rb;
@@ -23,7 +22,6 @@ public class Scooter : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _environmentMovement = GetComponent<EnvironmentMomement>();
     }
 
     private void Update()
@@ -46,7 +44,6 @@ public class Scooter : MonoBehaviour
     {
         _playerFollowTransform = newPlayerFollowTransform;
         _rb.isKinematic = true;
-        _environmentMovement.IsMovementOverridden = true;
     }
 
     public void Throw(Vector3 direction, float forceAmount)
