@@ -134,7 +134,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4171787857775022631}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 60
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -149,9 +149,9 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!120 &3414092066806283824
 LineRenderer:
@@ -267,6 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a9f7a0b4154b09459b6c79f3689bc23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _movementTouchAreaHeight: 0.25
 --- !u!114 &2370033558247878384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,7 +280,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73f1c38b196b87841975fea4283ecf7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 8
+  _velocity: {x: 0, y: 0, z: 0}
+  _maxForwardsAcceleration: 10
+  _maxForwardsVelocity: 12
+  _maxSidewaysAcceleration: 90
+  _maxSidewaysVelocity: 10
+  _maxZMovement: 3.5
 --- !u!114 &-8575095120788453095
 MonoBehaviour:
   m_ObjectHideFlags: 0

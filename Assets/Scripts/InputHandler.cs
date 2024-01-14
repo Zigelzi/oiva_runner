@@ -39,6 +39,10 @@ public class InputHandler : MonoBehaviour
 
             HandleMovement(touchPosition);
         }
+        else
+        {
+            StopSidewaysMovement();
+        }
     }
 
     private void OnDisable()
@@ -71,5 +75,12 @@ public class InputHandler : MonoBehaviour
         {
             _movement.Move(false);
         }
+    }
+
+    private void StopSidewaysMovement()
+    {
+        if (!_movement) return;
+
+        _movement.StopSidewaysMovement();
     }
 }

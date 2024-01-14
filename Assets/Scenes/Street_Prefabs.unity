@@ -277,6 +277,21 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6082657786066984308, guid: 274d0a5f1abc85d43963706ef1f6fdfd,
+        type: 3}
+      propertyPath: _maxSidewaysVelocity
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6082657786066984308, guid: 274d0a5f1abc85d43963706ef1f6fdfd,
+        type: 3}
+      propertyPath: _maxSidewaysAcceleration
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623870726675910068, guid: 274d0a5f1abc85d43963706ef1f6fdfd,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.m_ColorSpace
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 8100465218931439489, guid: 274d0a5f1abc85d43963706ef1f6fdfd,
         type: 3}
       propertyPath: m_LocalRotation.w

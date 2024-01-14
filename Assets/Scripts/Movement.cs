@@ -10,12 +10,15 @@ public class Movement : MonoBehaviour
     [SerializeField, Range(0, 5f)] private float _maxZMovement = 3.5f;
 
     private float _currentDistanceTravelled = 0;
+    private bool _isMovingSideways = false;
+    private Rigidbody _rb;
     private Vector3 _startingPosition;
     private Status _playerStatus;
 
     public float CurrentDistanceTravelled { get { return _currentDistanceTravelled; } }
     private void Awake()
     {
+        _rb = GetComponent<Rigidbody>();
         _playerStatus = GetComponent<Status>();
         _startingPosition = transform.position;
     }
@@ -33,34 +36,39 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _velocity = _rb.velocity;
         Vector3 desiredForwardsVelocity = Vector3.right * _maxForwardsVelocity;
         float maxForwardsVelocityChange = _maxForwardsAcceleration * Time.deltaTime;
 
+        _velocity.x = Mathf.MoveTowards(_velocity.x, desiredForwardsVelocity.x, maxForwardsVelocityChange);
 
-        if (_velocity.x < desiredForwardsVelocity.x)
-        {
-            _velocity.x = Mathf.Min(_velocity.x + maxForwardsVelocityChange, desiredForwardsVelocity.x);
-        }
-
-        transform.position += _velocity * Time.deltaTime;
+        if (!_isMovingSideways) _velocity.z = 0;
+        _rb.velocity = _velocity;
         _currentDistanceTravelled = Vector3.Distance(_startingPosition, transform.position);
     }
 
     public void Move(bool isMovingRight)
     {
         if (!enabled) return;
-
+        _isMovingSideways = true;
+        _velocity = _rb.velocity;
         Vector3 movementDirection = isMovingRight ? Vector3.back : Vector3.forward;
-        Vector3 sidewaysMovement = movementDirection * _maxSidewaysVelocity * Time.deltaTime;
-        Vector3 newPosition = transform.localPosition + sidewaysMovement;
-        newPosition.z = Mathf.Clamp(newPosition.z, -_maxZMovement, _maxZMovement);
-        transform.localPosition = newPosition;
+        Vector3 desiredSidewaysVelocity = movementDirection * _maxSidewaysVelocity;
+        float maxSidewaysVelocityChange = _maxSidewaysAcceleration * Time.deltaTime;
 
+        _velocity.z = Mathf.MoveTowards(_velocity.z, desiredSidewaysVelocity.z, maxSidewaysVelocityChange);
+        _rb.velocity = _velocity;
+    }
+
+    public void StopSidewaysMovement()
+    {
+        _isMovingSideways = false;
     }
 
 
     private void Disable()
     {
+        _rb.velocity = Vector3.zero;
         enabled = false;
     }
 }
