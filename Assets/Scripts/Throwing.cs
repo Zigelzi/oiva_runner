@@ -23,11 +23,13 @@ public class Throwing : MonoBehaviour
 
     public Transform CarryingPosition { get { return _carryingPosition; } }
     public Scooter CurrentScooter { get { return _currentScooter; } }
-    public float CurrentThrowForcePercentage { get { return _currentThrowForce / _initialMaxThrowForce; } }
+    public float CurrentThrowForcePercentage { get { return _currentThrowForce / _currentMaxThrowForce; } }
     public int CurrentThrowDistance { get { return _currentThrowDistance; } }
 
     public UnityEvent onScooterPickup;
     public UnityEvent onScooterThrow;
+    public UnityEvent onThrowForcePickup;
+    public UnityEvent onThrowForceFade;
 
     private void Awake()
     {
@@ -105,6 +107,7 @@ public class Throwing : MonoBehaviour
         if (_currentBoostCoroutine != null) StopCoroutine(_currentBoostCoroutine);
 
         _currentBoostCoroutine = StartCoroutine(IncreaseThrowForce(duration, additionalMaxForce));
+        onThrowForcePickup?.Invoke();
     }
 
     private IEnumerator IncreaseThrowForce(float duration, float additionalMaxForce)
@@ -113,6 +116,7 @@ public class Throwing : MonoBehaviour
 
         yield return new WaitForSeconds(duration);
         _currentMaxThrowForce = _initialMaxThrowForce;
+        onThrowForceFade?.Invoke();
     }
 
     private void Disable()

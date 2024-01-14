@@ -68,6 +68,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 64961526073740894, guid: e6139376bf14ce144b7584ca3e26d24b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -173,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0cf2079ed16f0844a0ea9d8874399bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _boostDuration: 3
+  _boostDuration: 10
   _boostStrenght: 100
 --- !u!4 &6453365365111715881 stripped
 Transform:

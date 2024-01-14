@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.3884441, b: 0.291, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1544,7 +1544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.5181932, b: 0.3254717, a: 1}
+  m_Color: {r: 0.73800004, g: 0.6850377, b: 0.28782, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1873,6 +1873,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d33970c19accb5948b69ddd132dc1dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _initialBarColor: {r: 1, g: 1, b: 1, a: 1}
+  _powerupActiveColor: {r: 1, g: 0.3882353, b: 0.2901961, a: 1}
+  _sliderBackgroundImage: {fileID: 2745032373757354007}
 --- !u!1 &8443201080892822791
 GameObject:
   m_ObjectHideFlags: 0
