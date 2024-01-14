@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnvironmentDespawner : MonoBehaviour
 {
-    [SerializeField] private float _despawnDistance = 25f;
+    [SerializeField] private const float DESPAWN_DISTANCE = 25f;
     private Transform _player;
 
     private bool _isMovementOverridden = false;
@@ -21,8 +21,7 @@ public class EnvironmentDespawner : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log($"{gameObject.name} z distance from player: {transform.localPosition.x - _player.position.x}");
-        if (transform.position.x - _player.position.x <= -_despawnDistance)
+        if (transform.position.x - _player.position.x <= -DESPAWN_DISTANCE)
         {
             Destroy(gameObject);
         }

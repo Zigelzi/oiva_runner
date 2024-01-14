@@ -13,6 +13,8 @@ public class StreetSpawner : MonoBehaviour
     [SerializeField] private Transform _propSpawn;
     [SerializeField] private Vector3 _spawnOffset = new Vector3(25, 0, 5);
 
+    private Vector3 _lastStreetPosition = Vector3.zero;
+
     private void Awake()
     {
         if (_streetPrefabs.Count <= 0) return;
@@ -38,19 +40,22 @@ public class StreetSpawner : MonoBehaviour
 
     private void SpawnStreet(int spawnCount, bool isInitial)
     {
-        float additionalXOffset = isInitial ? 0 : (_initialNumberOfStreets - 1) * _spawnOffset.x;
         for (int i = 0; i < spawnCount; i++)
         {
             int spawnIndex = Random.Range(0, _streetPrefabs.Count);
             Vector3 spawnPosition = new Vector3(
-                transform.position.x + (_spawnOffset.x * i) + additionalXOffset,
-                transform.position.y + _spawnOffset.y,
-                _spawnOffset.z);
+                _lastStreetPosition.x + _spawnOffset.x,
+                _lastStreetPosition.y + _spawnOffset.y,
+                _spawnOffset.z
+                );
+            if (isInitial && i == 0)
+            {
+                spawnPosition.x = 0;
+            }
             Transform instantiatedStreet = Instantiate(_streetPrefabs[spawnIndex], spawnPosition, Quaternion.identity, transform);
+            _lastStreetPosition = instantiatedStreet.position;
 
             if (_propPrefabs.Length < 1) continue;
-
-
 
             if (isInitial)
             {
