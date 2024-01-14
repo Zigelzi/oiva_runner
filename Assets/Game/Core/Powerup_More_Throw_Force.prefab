@@ -140,7 +140,7 @@ PrefabInstance:
     - target: {fileID: 8548129973101047385, guid: 590821bf14be9be41933a48409dea309,
         type: 3}
       propertyPath: m_Name
-      value: Powerup_Speed
+      value: Powerup_More_Throw_Force
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -149,8 +149,32 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3196846247939734075}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8548129973101047385, guid: 590821bf14be9be41933a48409dea309,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6276514257530973693}
   m_SourcePrefab: {fileID: 100100000, guid: 590821bf14be9be41933a48409dea309, type: 3}
+--- !u!1 &5573004588234547325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8548129973101047385, guid: 590821bf14be9be41933a48409dea309,
+    type: 3}
+  m_PrefabInstance: {fileID: 4320716548120055332}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6276514257530973693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573004588234547325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0cf2079ed16f0844a0ea9d8874399bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _boostDuration: 3
+  _boostStrenght: 100
 --- !u!4 &6453365365111715881 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7095616192635991565, guid: 590821bf14be9be41933a48409dea309,

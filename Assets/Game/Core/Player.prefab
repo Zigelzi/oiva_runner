@@ -302,7 +302,7 @@ MonoBehaviour:
   _maxThrowForce: 150
   _maxTimeToInteract: 0.5
   _throwForceIncrement: 30
-  _throwDirection: {x: 1, y: 0.4, z: 0}
+  _throwDirection: {x: 1, y: 0.25, z: 0}
   onScooterPickup:
     m_PersistentCalls:
       m_Calls: []

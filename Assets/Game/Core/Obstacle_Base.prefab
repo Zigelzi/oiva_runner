@@ -96,6 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0111a6a8906d4c44499f227dae687f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _boostDirection: {x: 0.5, y: 1, z: 0}
+  _boostStrength: 90
 --- !u!114 &-2277484492984700482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,7 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07fdf1d5334e0e1499ea90de753d1619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _despawnDistance: 25
 --- !u!1 &5047841033202550976
 GameObject:
   m_ObjectHideFlags: 0

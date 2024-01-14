@@ -47,11 +47,6 @@ public class Movement : MonoBehaviour
         _currentDistanceTravelled = Vector3.Distance(_startingPosition, transform.position);
     }
 
-    private void FixedUpdate()
-    {
-
-    }
-
     public void Move(bool isMovingRight)
     {
         if (!enabled) return;

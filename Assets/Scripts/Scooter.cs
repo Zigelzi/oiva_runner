@@ -61,7 +61,13 @@ public class Scooter : MonoBehaviour
         _currentDestructionCoroutine = StartCoroutine(DestroyAfterFlying());
     }
 
-    public void RestartDesruction()
+    public void Boost(Vector3 direction, float forceAmount)
+    {
+        _rb.AddForce(direction * forceAmount, ForceMode.Impulse);
+        RestartDesruction();
+    }
+
+    private void RestartDesruction()
     {
         if (_currentDestructionCoroutine != null)
         {

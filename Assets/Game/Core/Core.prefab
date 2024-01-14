@@ -245,6 +245,7 @@ MonoBehaviour:
   _propPrefabs:
   - {fileID: 1286434808392608329, guid: bfdcb8063b1b13d4eb5d4794a4ccc71f, type: 3}
   - {fileID: 7668567025451071815, guid: d05bcf207577171438110b1f01f19b87, type: 3}
+  _propSpawnPositionVariance: 2
   _propSpawnWeights:
   - 3
   - 1
@@ -972,11 +973,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2370033558247878384, guid: 5aa6ebe07a3f59042822e9d9b30a22a6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4171787857775022631, guid: 5aa6ebe07a3f59042822e9d9b30a22a6,
         type: 3}

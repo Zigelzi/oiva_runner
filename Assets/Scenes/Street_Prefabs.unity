@@ -134,7 +134,7 @@ PrefabInstance:
     - target: {fileID: 1588144243495662434, guid: 6a2f391165d624a40a7db0f111cafacd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.138
+      value: 34.14
       objectReference: {fileID: 0}
     - target: {fileID: 1588144243495662434, guid: 6a2f391165d624a40a7db0f111cafacd,
         type: 3}
@@ -185,6 +185,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Powerup_Speed
+      objectReference: {fileID: 0}
+    - target: {fileID: 6276514257530973693, guid: 6a2f391165d624a40a7db0f111cafacd,
+        type: 3}
+      propertyPath: _boostDuration
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -252,6 +257,16 @@ PrefabInstance:
       propertyPath: _propSpawnPositionVariance
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3394135553220801311, guid: 274d0a5f1abc85d43963706ef1f6fdfd,
+        type: 3}
+      propertyPath: _propSpawnWeights.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3394135553220801311, guid: 274d0a5f1abc85d43963706ef1f6fdfd,
+        type: 3}
+      propertyPath: _propSpawnWeights.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5206757196550328341, guid: 274d0a5f1abc85d43963706ef1f6fdfd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -271,11 +286,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.026639555
-      objectReference: {fileID: 0}
-    - target: {fileID: 6082657786066984308, guid: 274d0a5f1abc85d43963706ef1f6fdfd,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6623870726675910068, guid: 274d0a5f1abc85d43963706ef1f6fdfd,
         type: 3}
@@ -346,6 +356,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 8967469063763655325, guid: 274d0a5f1abc85d43963706ef1f6fdfd,
+        type: 3}
+      propertyPath: _initialMaxThrowForce
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
