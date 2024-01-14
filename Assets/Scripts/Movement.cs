@@ -34,17 +34,22 @@ public class Movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        _velocity = _rb.velocity;
         Vector3 desiredForwardsVelocity = Vector3.right * _maxForwardsVelocity;
         float maxForwardsVelocityChange = _maxForwardsAcceleration * Time.deltaTime;
 
+        _velocity = _rb.velocity;
         _velocity.x = Mathf.MoveTowards(_velocity.x, desiredForwardsVelocity.x, maxForwardsVelocityChange);
 
         if (!_isMovingSideways) _velocity.z = 0;
         _rb.velocity = _velocity;
         _currentDistanceTravelled = Vector3.Distance(_startingPosition, transform.position);
+    }
+
+    private void FixedUpdate()
+    {
+
     }
 
     public void Move(bool isMovingRight)

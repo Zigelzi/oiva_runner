@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 584745763930944016}
   - component: {fileID: -1602100747795730008}
   - component: {fileID: -5508011103702932186}
+  - component: {fileID: 5067992530091013627}
+  - component: {fileID: 3399165751693589495}
   m_Layer: 0
   m_Name: Street_Base
   m_TagString: Untagged
@@ -57,4 +59,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07fdf1d5334e0e1499ea90de753d1619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _despawnDistance: 25
+--- !u!65 &5067992530091013627
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6572587234529602509}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 26, y: 10, z: 1}
+  m_Center: {x: 7.5, y: 5, z: -0.25}
+--- !u!65 &3399165751693589495
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6572587234529602509}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 26, y: 10, z: 1}
+  m_Center: {x: 7.5, y: 5, z: -9.85}
