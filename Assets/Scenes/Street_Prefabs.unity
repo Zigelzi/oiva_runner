@@ -185,7 +185,7 @@ PrefabInstance:
     - target: {fileID: 3394135553220801311, guid: 274d0a5f1abc85d43963706ef1f6fdfd,
         type: 3}
       propertyPath: _propSpawnWeights.Array.data[1]
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5206757196550328341, guid: 274d0a5f1abc85d43963706ef1f6fdfd,
         type: 3}
