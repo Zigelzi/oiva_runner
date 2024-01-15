@@ -55,24 +55,24 @@ public class StreetSpawner : MonoBehaviour
             Transform instantiatedStreet = Instantiate(_streetPrefabs[spawnIndex], spawnPosition, Quaternion.identity, transform);
             _lastStreetPosition = instantiatedStreet.position;
 
-            if (_propPrefabs.Length < 1) continue;
+            //if (_propPrefabs.Length < 1) continue;
 
-            if (isInitial)
-            {
-                if (i == 0) continue;
-                if (i == 1)
-                {
-                    SpawnProp(instantiatedStreet, _propPrefabs[1]);
-                    continue;
-                }
-                if (i == 2)
-                {
-                    SpawnProp(instantiatedStreet, _propPrefabs[0]);
-                    continue;
-                }
-            }
-            GameObject propToSpawn = _propPrefabs[ChoosePropIndexByWeights()];
-            SpawnProp(instantiatedStreet, propToSpawn);
+            //if (isInitial)
+            //{
+            //    if (i == 0) continue;
+            //    if (i == 1)
+            //    {
+            //        SpawnProp(instantiatedStreet, _propPrefabs[1]);
+            //        continue;
+            //    }
+            //    if (i == 2)
+            //    {
+            //        SpawnProp(instantiatedStreet, _propPrefabs[0]);
+            //        continue;
+            //    }
+            //}
+            //GameObject propToSpawn = _propPrefabs[ChoosePropIndexByWeights()];
+            //SpawnProp(instantiatedStreet, propToSpawn);
 
         }
     }

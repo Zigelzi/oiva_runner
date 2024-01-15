@@ -10,8 +10,10 @@ public class Movement : MonoBehaviour
     [SerializeField, Range(0, 5f)] private float _maxZMovement = 3.5f;
 
     private float _currentDistanceTravelled = 0;
+    private int _currentTrack = -1;
     private bool _isMovingSideways = false;
     private Rigidbody _rb;
+    private int[] _tracks = { 0, 1, 2 };
     private Vector3 _startingPosition;
     private Status _playerStatus;
 
@@ -21,6 +23,9 @@ public class Movement : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _playerStatus = GetComponent<Status>();
         _startingPosition = transform.position;
+
+        _currentTrack = 1;
+        SetRunPosition(_currentTrack);
     }
 
     private void OnEnable()
@@ -50,19 +55,37 @@ public class Movement : MonoBehaviour
     public void Move(bool isMovingRight)
     {
         if (!enabled) return;
-        _isMovingSideways = true;
-        _velocity = _rb.velocity;
-        Vector3 movementDirection = isMovingRight ? Vector3.back : Vector3.forward;
-        Vector3 desiredSidewaysVelocity = movementDirection * _maxSidewaysVelocity;
-        float maxSidewaysVelocityChange = _maxSidewaysAcceleration * Time.deltaTime;
 
-        _velocity.z = Mathf.MoveTowards(_velocity.z, desiredSidewaysVelocity.z, maxSidewaysVelocityChange);
-        _rb.velocity = _velocity;
+        if (isMovingRight)
+        {
+            if (_currentTrack < _tracks.Length) _currentTrack++;
+        }
+        else
+        {
+            if (_currentTrack > 0) _currentTrack--;
+        }
+        SetRunPosition(_currentTrack);
     }
 
     public void StopSidewaysMovement()
     {
         _isMovingSideways = false;
+    }
+
+    private void SetRunPosition(int trackNumber)
+    {
+        if (trackNumber == 0)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, 2.5f);
+        }
+        if (trackNumber == 1)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+        }
+        if (trackNumber == 2)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -2.5f);
+        }
     }
 
 

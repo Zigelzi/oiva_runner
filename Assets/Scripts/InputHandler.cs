@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
-using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 public class InputHandler : MonoBehaviour
 {
     [SerializeField, Range(0, 1f)] private float _movementTouchAreaHeight = 0.25f;
@@ -20,6 +19,7 @@ public class InputHandler : MonoBehaviour
         _throwing = GetComponent<Throwing>();
 
         _actions.Player.Throw.performed += OnThrow;
+        _actions.Player.Move.performed += OnMove;
         _movementBoundary = Screen.height * _movementTouchAreaHeight;
 
     }
@@ -28,21 +28,6 @@ public class InputHandler : MonoBehaviour
     {
         _actions.Player.Enable();
         EnhancedTouchSupport.Enable();
-    }
-
-    private void Update()
-    {
-        if (Touch.activeTouches.Count > 0)
-        {
-            Vector2 touchPosition = Touch.activeTouches[0].screenPosition;
-            if (touchPosition.y < _movementBoundary) return;
-
-            HandleMovement(touchPosition);
-        }
-        else
-        {
-            StopSidewaysMovement();
-        }
     }
 
     private void OnDisable()
@@ -63,7 +48,14 @@ public class InputHandler : MonoBehaviour
         _throwing.Interact();
     }
 
-    private void HandleMovement(Vector2 touchPosition)
+    private void OnMove(InputAction.CallbackContext context)
+    {
+        Vector2 touchPosition = context.ReadValue<Vector2>();
+        Debug.Log(context.interaction);
+        HandleSidewaysMovement(touchPosition);
+    }
+
+    private void HandleSidewaysMovement(Vector2 touchPosition)
     {
         if (!_movement) return;
 
@@ -75,12 +67,5 @@ public class InputHandler : MonoBehaviour
         {
             _movement.Move(false);
         }
-    }
-
-    private void StopSidewaysMovement()
-    {
-        if (!_movement) return;
-
-        _movement.StopSidewaysMovement();
     }
 }
