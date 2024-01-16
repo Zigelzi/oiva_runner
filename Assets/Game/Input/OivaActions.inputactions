@@ -16,8 +16,17 @@
                 },
                 {
                     "name": "Move",
-                    "type": "Value",
+                    "type": "Button",
                     "id": "e5fc6ac3-8445-4bb8-8fcd-f50dcc62b7ba",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MovePosition",
+                    "type": "Value",
+                    "id": "d5013c31-b609-4c27-b7e7-fee80e78141f",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -39,11 +48,22 @@
                 {
                     "name": "",
                     "id": "4da154f5-1139-40c6-a751-b3a0e023abd8",
-                    "path": "<Touchscreen>/primaryTouch/position",
+                    "path": "<Touchscreen>/primaryTouch/press",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "669cbc7e-0068-48eb-8ce0-4bf5ebca46ca",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovePosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

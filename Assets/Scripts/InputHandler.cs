@@ -8,6 +8,7 @@ public class InputHandler : MonoBehaviour
     private OivaActions _actions;
     private Camera _mainCamera;
     private Movement _movement;
+    private InputAction _movePositionInput;
     float _movementBoundary = -1f;
     private Throwing _throwing;
 
@@ -17,9 +18,10 @@ public class InputHandler : MonoBehaviour
         _mainCamera = Camera.main;
         _movement = GetComponent<Movement>();
         _throwing = GetComponent<Throwing>();
+        _movePositionInput = _actions.Player.MovePosition;
 
         _actions.Player.Throw.performed += OnThrow;
-        _actions.Player.Move.performed += OnMove;
+        _actions.Player.Move.started += OnMoveStart;
         _movementBoundary = Screen.height * _movementTouchAreaHeight;
 
     }
@@ -48,10 +50,9 @@ public class InputHandler : MonoBehaviour
         _throwing.Interact();
     }
 
-    private void OnMove(InputAction.CallbackContext context)
+    private void OnMoveStart(InputAction.CallbackContext context)
     {
-        Vector2 touchPosition = context.ReadValue<Vector2>();
-        Debug.Log(context.interaction);
+        Vector2 touchPosition = _movePositionInput.ReadValue<Vector2>();
         HandleSidewaysMovement(touchPosition);
     }
 

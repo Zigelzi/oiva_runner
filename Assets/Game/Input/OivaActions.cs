@@ -38,8 +38,17 @@ public partial class @OivaActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Move"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""e5fc6ac3-8445-4bb8-8fcd-f50dcc62b7ba"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MovePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""d5013c31-b609-4c27-b7e7-fee80e78141f"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -61,11 +70,22 @@ public partial class @OivaActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4da154f5-1139-40c6-a751-b3a0e023abd8"",
-                    ""path"": ""<Touchscreen>/primaryTouch/position"",
+                    ""path"": ""<Touchscreen>/primaryTouch/press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""669cbc7e-0068-48eb-8ce0-4bf5ebca46ca"",
+                    ""path"": ""<Touchscreen>/primaryTouch/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MovePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -84,6 +104,7 @@ public partial class @OivaActions: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_MovePosition = m_Player.FindAction("MovePosition", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -147,12 +168,14 @@ public partial class @OivaActions: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Throw;
     private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_MovePosition;
     public struct PlayerActions
     {
         private @OivaActions m_Wrapper;
         public PlayerActions(@OivaActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Throw => m_Wrapper.m_Player_Throw;
         public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @MovePosition => m_Wrapper.m_Player_MovePosition;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -168,6 +191,9 @@ public partial class @OivaActions: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
+            @MovePosition.started += instance.OnMovePosition;
+            @MovePosition.performed += instance.OnMovePosition;
+            @MovePosition.canceled += instance.OnMovePosition;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -178,6 +204,9 @@ public partial class @OivaActions: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
+            @MovePosition.started -= instance.OnMovePosition;
+            @MovePosition.performed -= instance.OnMovePosition;
+            @MovePosition.canceled -= instance.OnMovePosition;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -208,5 +237,6 @@ public partial class @OivaActions: IInputActionCollection2, IDisposable
     {
         void OnThrow(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
+        void OnMovePosition(InputAction.CallbackContext context);
     }
 }
