@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 454546285124365306}
   - component: {fileID: 4980535406825331452}
   - component: {fileID: 5652199573312342909}
+  - component: {fileID: 6392792862224091183}
   - component: {fileID: 5596268301492993579}
   - component: {fileID: 2370033558247878384}
   - component: {fileID: -8575095120788453095}
@@ -152,6 +153,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!95 &6392792862224091183
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4171787857775022631}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 897b34267f422c1499700402763d096e, type: 3}
+  m_Controller: {fileID: 9100000, guid: 2247d7a6a49bb9247b0f3a3b7e9ac747, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &5596268301492993579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +300,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 407374, guid: 48b470c6a762f60438c631f219257520, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9571598, guid: 48b470c6a762f60438c631f219257520, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

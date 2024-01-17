@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float _maxSidewaysVelocity = 8f;
     [SerializeField, Range(0, 5f)] private float _maxZMovement = 3.5f;
 
+    private Animator _animator;
     private float _currentDistanceTravelled = 0;
     private int _currentTrack = -1;
     private bool _isMovingSideways = false;
@@ -20,6 +21,7 @@ public class Movement : MonoBehaviour
     public float CurrentDistanceTravelled { get { return _currentDistanceTravelled; } }
     private void Awake()
     {
+        _animator = GetComponent<Animator>();
         _rb = GetComponent<Rigidbody>();
         _playerStatus = GetComponent<Status>();
         _startingPosition = transform.position;
@@ -50,6 +52,11 @@ public class Movement : MonoBehaviour
         if (!_isMovingSideways) _velocity.z = 0;
         _rb.velocity = _velocity;
         _currentDistanceTravelled = Vector3.Distance(_startingPosition, transform.position);
+    }
+
+    private void FixedUpdate()
+    {
+        UpdateAnimation();
     }
 
     public void Move(bool isMovingRight)
@@ -93,5 +100,13 @@ public class Movement : MonoBehaviour
     {
         _rb.velocity = Vector3.zero;
         enabled = false;
+    }
+
+    private void UpdateAnimation()
+    {
+        if (!_animator) return;
+
+        float forwardsVelocityRatio = _velocity.x / _maxForwardsVelocity;
+        _animator.SetFloat("forwardSpeed", forwardsVelocityRatio);
     }
 }
